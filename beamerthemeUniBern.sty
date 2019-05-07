@@ -85,11 +85,11 @@
    \setlength{\baselineskip}{0pt}
    \setlength{\lineskip}{-\beamer@ubOverlap}
    \setlength{\parskip}{0pt}
-   \ifnumgreater{\c@framenumber}{1}{
+   \ifnumgreater{\c@framenumber}{0}{
     \raisebox{-\height-2\beamer@ubBorderHeight}[0pt][0pt]{\hspace*{0.86\paperwidth}\includegraphics[width=0.125\paperwidth]{ublogo.pdf}}
    }{}
 
-   \ifnumgreater{\c@framenumber}{2}{
+   \ifnumgreater{\c@framenumber}{1}{
         \ifdefempty{\insertframesubtitle}{
           \rule{0pt}{6ex+\beamer@ubTitleHeight}\\
           \color{ubGrey}\rule{\paperwidth}{\paperheight-\beamer@ubTitleHeight-\beamer@ubFooterHeight-6ex}
@@ -102,7 +102,7 @@
 }
 
 \defbeamertemplate*{headline}{uni bern}{% 
-    \ifnumgreater{\c@framenumber}{2}{
+    \ifnumgreater{\c@framenumber}{1}{
       \vspace{3.5ex}
       \hspace{4.5ex}\inserttitle
     }{}
@@ -126,15 +126,15 @@
 \setbeamersize{text margin left=4ex}
 \setbeamersize{text margin right=4ex}
 
-\AtBeginDocument{
-  \begin{frame}
-    \vspace*{\stretch{1}}
-    \begin{center}
-    \hspace*{30pt}\includegraphics[height=0.6\paperheight]{ublogo.pdf}
-    \end{center}
-
-    \vspace*{\stretch{1}}
-  \end{frame}
-}
+%\AtBeginDocument{
+%  \begin{frame}
+%    \vspace*{\stretch{1}}
+%    \begin{center}
+%    \hspace*{30pt}\includegraphics[height=0.6\paperheight]{ublogo.pdf}
+%    \end{center}
+%
+%    \vspace*{\stretch{1}}
+%  \end{frame}
+%}
 
 \mode<all>
