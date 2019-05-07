@@ -1,19 +1,18 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
 %\documentclass[aspectratio=169,10pt,draft]{beamer}
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
-\subtitle{Untertitel}
-\author[David Haberthür]{David Haberthür \and
+\author{David Haberthür \and
 	Dea Aaldijk \and
 	Matthias Messerli \and
-	Fluri A.M. Wieland \and
+	Fluri A.\ M.\ Wieland \and
 	Oleksiy Khoma \and
 	Helena Röss \and
 	Ruslan Hlushchuk}
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
-\date{June 5, 2019 | Bruker micro-CT Users Meeting 2019}
+\date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
 %\includeonlyframes{current}
 %then....
@@ -22,15 +21,15 @@
 
 \usepackage[english]{babel}
 \usepackage{microtype}
-\usepackage{textcomp}
 \usepackage[backend=biber, style=numeric, url=false, isbn=false, maxbibnames=1, sorting=none]{biblatex}
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage[detect-all=true, range-phrase=--, range-units=single, binary-units=true]{siunitx}
 \usepackage[absolute,overlay]{textpos} %for the \source{} command
 \usepackage{gitinfo2}
+\usepackage[version=4]{mhchem}
 \usepackage{xspace}
-\usepackage{hyperref}
+\usepackage{ccicons}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % globally set image width
@@ -51,7 +50,7 @@
 % Acknowledge things in the lower right of the slide
 % Based on http://tex.stackexchange.com/a/48485/828
 \newcommand{\source}[1]{%
-	\begin{textblock*}{4cm}(8.7cm,8.6cm)%
+	\begin{textblock*}{4cm}(8cm,8cm)%
 		\begin{beamercolorbox}[ht=0.5cm,right]{framesource}%
 			\tiny\usebeamerfont{framesource}\usebeamercolor[fg]{framesource} {#1}%
 		\end{beamercolorbox}%
@@ -60,13 +59,11 @@
 
 % Define us our custom footer
 \defbeamertemplate{footline}{unibe}{%
-	\usebeamercolor[fg]{page number in head/foot}%
-	\usebeamerfont{page number in head/foot}%
-	\hspace*{0.5cm}%
-	\insertshortauthor\xspace|\xspace\insertshorttitle\xspace|\xspace Version \gitAbbrevHash%
-	\hspace*{\fill}
+	\hspace*{0.6cm}%
+	\href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}%
+	\hspace*{\fill}%
 	\insertframenumber\,/\,\inserttotalframenumber%
-	\hspace*{0.5cm}%
+	\hspace*{1.2cm}%
 	\vskip2pt%
 }
 \setbeamertemplate{footline}[unibe]
@@ -75,13 +72,11 @@
 % http://tex.stackexchange.com/a/10686/828
 \renewbibmacro{in:}{}
 % http://tex.stackexchange.com/a/13076/828
-% \AtEveryBibitem{\clearfield{title}}
 \AtEveryBibitem{\clearfield{journaltitle}}
 \AtEveryBibitem{\clearfield{pages}}
 \AtEveryBibitem{\clearfield{volume}}
 \AtEveryBibitem{\clearfield{number}}
 \AtEveryBibitem{\clearfield{editors}}
-
 
 \begin{document}
 % We want no footline on the title page, http://tex.stackexchange.com/a/18829/828 helps
@@ -92,58 +87,108 @@
 	\end{frame}%
 }
 
-%\begin{frame}
-%	\frametitle{Contents}
-%	\tableofcontents
-%\end{frame}
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents
+\end{frame}
 
 \begin{frame}
-	\frametitle{Hello World}
-	
+	\frametitle{Hello!}
 	\begin{itemize}
-	\item Item One
-	\item Item Sub
+		\item<1-> University of Bern, Switzerland
+		\item<1-> Institute of Anatomy
+		\item<1-> Group for topographic and clinical Anatomy
+		\item<1-> \uct-Team: Ruslan Hlushchuk, David Haberthür, Oleksiy-Zakhar Khoma, Fluri Wieland, Carlos Correa Shokiche
+		\item<1-> Biomedical research
+		\begin{itemize}
+			\item microangioCT~\cite{Hlushchuk2018}: Tumor vasculature, angiogenesis in the heart, musculature
+			\item Cancer research: Melanoma
+			\item Lung imaging: Tumor detection and classification
+			\item Physiology: Zebrafish musculature and gills
+		\end{itemize}
+		\item<1-> SkyScan 1172 \& 1272 \visible<2->{\& 2214}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Hello World}
-\framesubtitle{A second title for the frame}
-\begin{flushleft}
-\textbf{Hello Left}
-\end{flushleft}
-\begin{flushright}
-Hello Right
-\end{flushright}
+	\frametitle{Why?}
+	\begin{itemize}
+		\item Adaptation of respiratory organ to endurance training
+		\item Study \ce{O2} metabolism
+	\end{itemize}
+\end{frame}
 
-\begin{itemize}
-\item Item One \cite{Hlushchuk2018}
-\begin{itemize}
-\item Item Sub
-\end{itemize}
-\end{itemize}
+%<p style="font-size: 0.9rem;font-style: italic;"><a href="https://www.flickr.com/photos/81388404@N00/2746294525">"Caterpillar3"</a><span>by <a href="https://www.flickr.com/photos/81388404@N00">tmbg47</a></span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY-NC-SA 2.0</a><a href="https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" style="display: inline-block;white-space: none;opacity: .7;margin-top: 2px;margin-left: 3px;height: 22px !important;"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a></p>
+
+
+\begin{frame}
+	\frametitle{Oxygen pathway}
+	\begin{columns}
+		\begin{column}[T]{0.6\linewidth}
+			\begin{itemize}
+				\item<1-> Insects: Spiracles \& Trachea
+				\item<2-> Bony fishes: Gills
+				\item<3-> Mammals: Lungs
+			\end{itemize}
+		\end{column}
+		\begin{column}[T]{0.4\linewidth}
+			\only<1>{\includegraphics[width=\imsize]{./img/2746294525_52566921c8_o.jpg}\source{flic.kr/p/5bFtFB | \ccbyncsa}}
+			\only<2>{\includegraphics[width=\imsize]{./img/2267404278_88e0f1f8b6_o.jpg}\source{flic.kr/p/4sn3id | \ccbyncsa}}
+			\only<3>{\includegraphics[width=\imsize]{./img/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg}\source{enwp.org/bluewhale | \ccPublicDomain}}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Thanks}
-	\begin{columns}
-		\begin{column}{0.48\linewidth}
+	\frametitle{How?}
 	\begin{itemize}
-		\item<1-> Topographic and clinical Anatomy, namely
+		\item Fish training
+		\item Scanning
+		\item Delination
+		\item Analysis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What?}
+	\begin{itemize}
+		\item Gill volume
+		\item Gill complexity
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Wee!}
+	\begin{itemize}
+		\item We conclude that the zebrafish respiratory organ has a high plasticity, and after endurance training increases its volume and changes its structure in order to facilitate \ce{O2} uptake.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Thanks!}
+	\begin{columns}
+		\begin{column}{0.58\linewidth}
+	\begin{itemize}
+		\item<1-> Topographic and clinical Anatomy
 		\begin{itemize}
-			\item<1-> Ruslan Hlushchuk
-			\item<1-> Marine Potez
-			\item<1-> Audrey Bouchet
-			\item<1-> Valentin Djonov
+			\item<1-> Dea Aaldijk, Matthias Messerli
+			\item<1-> Ruslan Hlushchuk, Valentin Djonov
+			\item<1-> Fluri A.\ M.\ Wieland, Oleksiy Khoma
+			\item<1-> Sarya Fark, Helena Röss
 		\end{itemize}
-		\item<1-> ESRF Grenoble
+		\item<1-> People@ana.unibe.ch
+		\begin{itemize}
+			\item<1-> Werner Graber, Jeannine Wagner-Zimmermann, Beat Haenni
+			\item<1-> Regula Buergy, Eveline Yao and Sara Soltermann
+			\item<1-> Marcos Sande, Carolina Garcia
+			\item<1-> Ines Marquez, Xavier Langa and Alexander Uwe Ernst
+		\end{itemize}
 		\item<1-> SNF
 		\item<2-> You, for listening
-		\item[]
 		\item<3-> Questions?
 	\end{itemize}
 		\end{column}
-		\begin{column}{0.48\linewidth}
+		\begin{column}{0.38\linewidth}
 			\includegraphics<1->[width=\linewidth]{./img/team}
 		\end{column}	
 	\end{columns}	
@@ -151,16 +196,17 @@ Hello Right
 
 \begin{frame}
 	\frametitle{References}
-	\renewcommand*{\bibfont}{\tiny}
+	%\renewcommand*{\bibfont}{\tiny}
 	\setbeamertemplate{bibliography item}{\insertbiblabel}
 	\printbibliography
 \end{frame}
 
 \begin{frame}
-	\frametitle{References}
-	\renewcommand*{\bibfont}{\tiny}
-	\setbeamertemplate{bibliography item}{\insertbiblabel}
-	\printbibliography
+	\frametitle{Colophon}
+	\begin{itemize}
+		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{Template from Corporate Design und Vorlagen, University of Bern}
+		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{Full (\LaTeX) source code of this \textsc{beamer} presentation is available on GitHub}
+	\end{itemize}
 \end{frame}
 
 \end{document}
