@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-%\documentclass[aspectratio=169,10pt,draft]{beamer}
-\documentclass[aspectratio=169,10pt]{beamer}
+\documentclass[aspectratio=169,10pt,draft]{beamer}
+%\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -38,6 +38,7 @@
 \usepackage{xspace}
 \usepackage{ccicons}
 \usepackage{multimedia}
+\usepackage{animate}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
@@ -63,9 +64,6 @@
 	\raisebox{-1ex}{\makebox[0pt][r]{\tiny \href{http://#1}{#1} #2}}
 }
 
-%\raisebox{1pt}{\makebox[0pt][r]{\footnotesize some other text}}
-
-
 % Define us our custom footer
 \defbeamertemplate{footline}{unibe}{%
 	\hspace*{0.6cm}%
@@ -90,11 +88,6 @@
 	\clearlist{editors}
 	\clearname{editors}
 	\clearfield{issn}
-	%\clearfield{year}
-	%\clearfield{day}
-	%\clearfield{month}
-	%\clearfield{endday}
-	%\clearfield{endmonth}
 }
 
 
@@ -174,8 +167,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Adaptation}
-	Adaptation to training exercise
+	\frametitle{Adaptation to training exercise}
 	\begin{itemize}
 		\item Increased body length and weight
 		\item Skeletal and heart muscle hypertrophy
@@ -189,38 +181,82 @@
 		\begin{columns}
 	\begin{column}{0.618\linewidth}
 		\begin{itemize}
-			\item Fish training according to \textcite{Palstra2010}
-			\item Scanning
-			\item Delination
-			\item Analysis
+			\item<1-> Fish training according to \textcite{Palstra2010}
+			\item<3-> Morphological measurement
+			\item<4-> Respirometry
+			\item<5-> Electron microscopy
+			\item<6-> \uct imaging
+			\begin{itemize}
+				\item<7-> Delination
+				\item<8-> Analysis
+			\end{itemize}
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.382\linewidth}
-		\includegraphics<1>[width=\linewidth]{./img/0001713_swim-tunnel-5-l-230-v-50-hz}%
-		\only<1>{\source{loligosystems.com/swim-tunnel-5-l-230-v-50-hz}{}}
-		\includegraphics<2>[width=\linewidth]{./img/Anim1754_-_Flickr_-_NOAA_Photo_Library}%
-		\only<2>{\source{This is just temporary!}{}}
+		\only<1>{
+			\includegraphics[width=\linewidth]{./img/0001713_swim-tunnel-5-l-230-v-50-hz}%
+			\source{loligosystems.com/swim-tunnel-5-l-230-v-50-hz}{}
+			}
+		\only<2>{
+			\animategraphics[loop,autoplay,width=\linewidth]{25}{./mov/fishvideo/fishvideo_}{0001}{0100}
+			}
+		\only<5>{EM-Bilder}
+		\includegraphics<6>[width=\linewidth]{./img/Overviews}%
+		\includegraphics<7>[width=\linewidth]{./img/CTAn}%
+		\only<8>{
+			\animategraphics[loop,autoplay,width=\linewidth]{25}{./mov/coder/coder-}{0}{133}
+			}
 		\end{column}	
 	\end{columns}	
-\end{frame}
-
-\begin{frame}{movie}
-	\centering    
-	\movie[label=show3,
-		width=\linewidth,
-		poster,
-		autostart,
-		showcontrols,
-		loop]{\includegraphics[width=1.0\textwidth]{./img/fishvideo.png}}{./img/fishvideo.mp4}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What?}
 	\begin{itemize}
+		\item Endurance
+		\item Body size
+		\item Gill structure
 		\item Gill volume
 		\item Gill complexity
+		\item \ce{O2 consumption}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Fish morphology}
+	\includegraphics<1>[width=\linewidth]{./img/Endurance}
+	\includegraphics<2>[width=\linewidth]{./img/Lengths}
+	\includegraphics<3>[width=\linewidth]{./img/Weights}
+\end{frame}
+
+\begin{frame}
+	\frametitle{EM}
+	\includegraphics<1>[width=\linewidth]{./img/Filament_length}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill volume}
+	\includegraphics<1>[width=\linewidth]{./img/Gillvolume}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill complexity}
+	\includegraphics<1>[width=\linewidth]{./img/Gills_per_organ_average_slices_from3062slices}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\ce{O2} consumption}
+	\includegraphics<1>[width=\linewidth]{./img/O2_normalized}
+\end{frame}
+
+\note{
+	whis: float, sequence, or string (default = 1.5)
+	As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
+	In other words, where IQR is the interquartile range (Q3-Q1), the upper whisker will extend to last datum less than Q3 + whis*IQR).
+	Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
+	Beyond the whiskers, data are considered outliers and are plotted as individual points.
+	}
+
 
 \begin{frame}
 	\frametitle{Wee!}
