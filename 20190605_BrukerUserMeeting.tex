@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-\documentclass[aspectratio=169,10pt,draft]{beamer}
-%\documentclass[aspectratio=169, 10pt]{beamer}
+%\documentclass[aspectratio=169,10pt,draft]{beamer}
+\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -14,7 +14,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-%\includeonlyframes{current}
+\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -39,6 +39,16 @@
 \usepackage{ccicons}
 \usepackage{multimedia}
 \usepackage{animate}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage[eulergreek]{sansmath}
+\pgfplotsset{
+  tick label style = {font=\sansmath\sffamily},
+  every axis label = {font=\sansmath\sffamily},
+  legend style = {font=\sansmath\sffamily},
+  label style = {font=\sansmath\sffamily}
+}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
@@ -230,25 +240,17 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{EM}
-	\includegraphics<1>[width=\linewidth]{./img/Filament_length}
+	\frametitle{Fish morphology}
+	\only<1>{\include{/img/Endurance}}
+	\only<2>{\include{./img/Lengths}}
+	\only<3>{\include{./img/Weights}}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Gill volume}
-	\includegraphics<1>[width=\linewidth]{./img/Gillvolume}
-\end{frame}
 
-\begin{frame}
-	\frametitle{Gill complexity}
-	\includegraphics<1>[width=\linewidth]{./img/Gills_per_organ_average_slices_from3062slices}
-\end{frame}
-
-\begin{frame}
-	\frametitle{\ce{O2} consumption}
-	\includegraphics<1>[width=\linewidth]{./img/O2_normalized}
-\end{frame}
-
+\note{
+	Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside. Length of the fish was measured after anaesthesia with tricaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.
+	}
+	
 \note{
 	whis: float, sequence, or string (default = 1.5)
 	As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
@@ -256,6 +258,32 @@
 	Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
 	Beyond the whiskers, data are considered outliers and are plotted as individual points.
 	}
+	
+\begin{frame}
+	\frametitle{EM}
+	\include{./img/Filament_length}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill volume}
+	\include{./img/Gillvolume}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill complexity}
+	\include{./img/Gills_per_organ}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill complexity}
+	\includegraphics<1>[height=\textheight]{./img/control03}
+	\source{Show the hull and gills}{TEMPORARY}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\ce{O2} consumption}
+	\include{./img/O2_normalized}
+\end{frame}
 
 
 \begin{frame}
