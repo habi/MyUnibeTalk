@@ -1,0 +1,111 @@
+% This file was created by matplotlib2tikz v0.7.4.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
+
+\begin{axis}[
+axis line style={white!80.0!black},
+tick align=outside,
+x grid style={white!80.0!black},
+xlabel={Experiment},
+xmajorticks=false,
+xmin=-0.5, xmax=1.5,
+xtick style={color=white!15.0!black},
+xtick={0,1},
+xticklabels={Control,Swimmer},
+y grid style={white!80.0!black},
+ylabel={Gills per organ},
+ymajorgrids,
+ymajorticks=false,
+ymin=0, ymax=0.436126551884328,
+ytick style={color=white!15.0!black},
+ytick={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4},
+yticklabels={0.00,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40}
+]
+\path [draw=white!25.098039215686274!black, fill=white!85.09803921568627!black, line width=0.9pt]
+(axis cs:-0.4,0.382496841309432)
+--(axis cs:0.4,0.382496841309432)
+--(axis cs:0.4,0.40078453974052)
+--(axis cs:-0.4,0.40078453974052)
+--(axis cs:-0.4,0.382496841309432)
+--cycle;
+\path [draw=white!25.098039215686274!black, fill=color0, line width=0.9pt]
+(axis cs:0.6,0.349508101341073)
+--(axis cs:1.4,0.349508101341073)
+--(axis cs:1.4,0.367828846032819)
+--(axis cs:0.6,0.367828846032819)
+--(axis cs:0.6,0.349508101341073)
+--cycle;
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+0 0.382496841309432
+0 0.366846367137451
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+0 0.40078453974052
+0 0.421306108182572
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+-0.2 0.366846367137451
+0.2 0.366846367137451
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+-0.2 0.421306108182572
+0.2 0.421306108182572
+};
+\addplot [black, mark=*, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
+table {%
+0 0.324346236114214
+0 0.430803679704798
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+1 0.349508101341073
+1 0.328636765492142
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+1 0.367828846032819
+1 0.370980682541585
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+0.8 0.328636765492142
+1.2 0.328636765492142
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+0.8 0.370980682541585
+1.2 0.370980682541585
+};
+\addplot [black, mark=*, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
+table {%
+1 0.397507730617411
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+-0.4 0.385498429400225
+0.4 0.385498429400225
+};
+\addplot [line width=0.9pt, white!25.098039215686274!black]
+table {%
+0.6 0.359924925696058
+1.4 0.359924925696058
+};
+\draw[-,black] (axis cs:1,0.435111716501846) -- (axis cs:0,0.435111716501846);
+\draw[] (axis cs:0.5,0.435111716501846) -- (axis cs:0.5,0.435111716501846);
+\node at (axis cs:0.5,0.435111716501846)[
+  scale=0.9,
+  fill=white!85.09803921568627!black,
+  draw=black,
+  line width=0.6pt,
+  inner sep=2.2pt,
+  text=black,
+  rotate=0.0
+]{** | p=0.0088};
+\end{axis}
+
+\end{tikzpicture}
