@@ -1,105 +1,133 @@
 % This file was created by matplotlib2tikz v0.7.4.
 \begin{tikzpicture}
 
-\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
+%\definecolor{ubRed}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
-axis line style={white!80.0!black},
-tick align=outside,
-x grid style={white!80.0!black},
+%axis line style={white!80.0!black},
+%tick align=outside,
+%x grid style={white!80.0!black},
 xlabel={Experiment},
-xmajorticks=false,
+%xmajorticks=false,
 xmin=-0.5, xmax=1.5,
-xtick style={color=white!15.0!black},
+%xtick style={color=white!15.0!black},
 xtick={0,1},
 xticklabels={Control,Swimmer},
-y grid style={white!80.0!black},
+%y grid style={white!80.0!black},
 ylabel={Gills per organ},
-ymajorgrids,
-ymajorticks=false,
-ymin=0, ymax=0.436126551884328,
-ytick style={color=white!15.0!black},
+%ymajorgrids,
+%ymajorticks=false,
+ymin=0, %ymax=0.436916431126078,
+%ytick style={color=white!15.0!black},
 ytick={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4},
 yticklabels={0.00,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40}
 ]
-\path [draw=white!25.098039215686274!black, fill=white!85.09803921568627!black, line width=0.9pt]
+\path [draw=black, fill=ubGrey]
 (axis cs:-0.4,0.382496841309432)
 --(axis cs:0.4,0.382496841309432)
 --(axis cs:0.4,0.40078453974052)
 --(axis cs:-0.4,0.40078453974052)
 --(axis cs:-0.4,0.382496841309432)
 --cycle;
-\path [draw=white!25.098039215686274!black, fill=color0, line width=0.9pt]
+\path [draw=black, fill=ubRed]
 (axis cs:0.6,0.349508101341073)
 --(axis cs:1.4,0.349508101341073)
 --(axis cs:1.4,0.367828846032819)
 --(axis cs:0.6,0.367828846032819)
 --(axis cs:0.6,0.349508101341073)
 --cycle;
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 0 0.382496841309432
 0 0.366846367137451
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 0 0.40078453974052
 0 0.421306108182572
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 -0.2 0.366846367137451
 0.2 0.366846367137451
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 -0.2 0.421306108182572
 0.2 0.421306108182572
 };
-\addplot [black, mark=*, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
-table {%
-0 0.324346236114214
-0 0.430803679704798
-};
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+%\addplot [black, mark=x, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
+%table {%
+%0 0.324346236114214
+%0 0.430803679704798
+%};
+\addplot [line width=0.9pt, green]
 table {%
 1 0.349508101341073
 1 0.328636765492142
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 1 0.367828846032819
 1 0.370980682541585
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 0.8 0.328636765492142
 1.2 0.328636765492142
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 0.8 0.370980682541585
 1.2 0.370980682541585
 };
-\addplot [black, mark=*, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
-table {%
-1 0.397507730617411
-};
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+%\addplot [black, mark=x, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
+%table {%
+%1 0.397507730617411
+%};
+\addplot [line width=0.9pt, green]
 table {%
 -0.4 0.385498429400225
 0.4 0.385498429400225
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black]
+\addplot [line width=0.9pt, green]
 table {%
 0.6 0.359924925696058
 1.4 0.359924925696058
 };
-\draw[-,black] (axis cs:1,0.435111716501846) -- (axis cs:0,0.435111716501846);
+\addplot [only marks, draw=black, fill=ubGrey, colormap/blackwhite]
+table{%
+x                      y
+-0.0322470980264863 0.398180638009362
+0.151222327067355 0.384645825823707
+0.111427844551302 0.385682004675644
+-0.123951431641773 0.381780513138006
+0.108149443193039 0.401652506984239
+-0.00969084104412871 0.430803679704798
+-0.0859864338768635 0.421306108182572
+0.116225904129875 0.324346236114214
+0.199988396834571 0.366846367137451
+-0.000235505740466463 0.385314854124806
+};
+\addplot [only marks, draw=black, fill=ubRed, colormap/blackwhite]
+table{%
+x                      y
+1.19736710462875 0.360517193679055
+1.13259026177626 0.363812777627831
+0.809485026455228 0.328636765492142
+0.852459356469413 0.35933265771306
+1.1378679356787 0.330896994967363
+0.962794185736976 0.346290741881158
+0.904925111497068 0.397507730617411
+0.871323991038766 0.370980682541585
+1.13214899123732 0.359160179720818
+1.0919792172582 0.369167535501148
+};
+\draw[|-|] (axis cs:1,0.435111716501846) -- (axis cs:0,0.435111716501846) node [midway,above] {};
 \draw[] (axis cs:0.5,0.435111716501846) -- (axis cs:0.5,0.435111716501846);
 \node at (axis cs:0.5,0.435111716501846)[
   scale=0.9,
-  fill=white!85.09803921568627!black,
+  fill=ubGrey,
   draw=black,
   line width=0.6pt,
   inner sep=2.2pt,

@@ -1,0 +1,133 @@
+% This file was created by matplotlib2tikz v0.7.4.
+\begin{tikzpicture}
+
+%\definecolor{ubRed}{rgb}{0.83921568627451,0,0.168627450980392}
+
+\begin{axis}[
+%axis line style={white!80.0!black},
+%tick align=outside,
+%x grid style={white!80.0!black},
+%xmajorticks=false,
+xmin=-0.5, xmax=1.5,
+%xtick style={color=white!15.0!black},
+xtick={0,1},
+xticklabels={Control,Swimmer},
+%y grid style={white!80.0!black},
+ylabel={Gill volume [\si{\micro\litre}]},
+%ymajorgrids,
+%ymajorticks=false,
+ymin=0, %ymax=0.770697055458566,
+%ytick style={color=white!15.0!black},
+ytick={0,0.1,0.2,0.3,0.4,0.5,0.6,0.7},
+yticklabels={0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7}
+]
+\path [draw=black, fill=ubGrey]
+(axis cs:-0.4,0.447649695726768)
+--(axis cs:0.4,0.447649695726768)
+--(axis cs:0.4,0.554668101627052)
+--(axis cs:-0.4,0.554668101627052)
+--(axis cs:-0.4,0.447649695726768)
+--cycle;
+\path [draw=black, fill=ubRed]
+(axis cs:0.6,0.486075630595014)
+--(axis cs:1.4,0.486075630595014)
+--(axis cs:1.4,0.58742018834191)
+--(axis cs:0.6,0.58742018834191)
+--(axis cs:0.6,0.486075630595014)
+--cycle;
+\addplot [line width=0.9pt, green]
+table {%
+0 0.447649695726768
+0 0.376938425845528
+};
+\addplot [line width=0.9pt, green]
+table {%
+0 0.554668101627052
+0 0.572242192769256
+};
+\addplot [line width=0.9pt, green]
+table {%
+-0.2 0.376938425845528
+0.2 0.376938425845528
+};
+\addplot [line width=0.9pt, green]
+table {%
+-0.2 0.572242192769256
+0.2 0.572242192769256
+};
+\addplot [line width=0.9pt, green]
+table {%
+1 0.486075630595014
+1 0.427215702498488
+};
+\addplot [line width=0.9pt, green]
+table {%
+1 0.58742018834191
+1 0.623046643313328
+};
+\addplot [line width=0.9pt, green]
+table {%
+0.8 0.427215702498488
+1.2 0.427215702498488
+};
+\addplot [line width=0.9pt, green]
+table {%
+0.8 0.623046643313328
+1.2 0.623046643313328
+};
+%\addplot [black, mark=x, mark size=2, mark options={solid,fill=white!25.098039215686274!black}, only marks]
+%table {%
+%1 0.749298475419024
+%};
+\addplot [line width=0.9pt, green]
+table {%
+-0.4 0.48488362116854
+0.4 0.48488362116854
+};
+\addplot [line width=0.9pt, green]
+table {%
+0.6 0.542154490975104
+1.4 0.542154490975104
+};
+\addplot [only marks, draw=black, fill=ubGrey, colormap/blackwhite]
+table{%
+x                      y
+-0.177324872476305 0.572242192769256
+-0.063553536460232 0.471672297437017
+-0.127173503667371 0.56475262570696
+-0.140536340773334 0.568003444252336
+-0.0449978015031713 0.524414529387328
+0.0399882813308409 0.484753900995424
+-0.0758154144069236 0.376938425845528
+-0.0334201811304397 0.439642161823352
+-0.0234274539581418 0.41752174920648
+0.118939057427129 0.485013341341656
+};
+\addplot [only marks, draw=black, fill=ubRed, colormap/blackwhite]
+table{%
+x                      y
+0.968335974120825 0.567564796770337
+1.07007525219083 0.503736968660552
+0.991193737838358 0.449384355640976
+0.886410654649808 0.480188517906501
+1.08845905619196 0.623046643313328
+0.85356807648219 0.577596442831624
+1.17491726910287 0.590694770178672
+1.16555444601312 0.516744185179872
+1.00788018410688 0.749298475419024
+1.09781093186924 0.427215702498488
+};
+\draw[|-|] (axis cs:1,0.756791460173214) -- (axis cs:0,0.756791460173214) node [midway,above] {};
+\draw[] (axis cs:0.5,0.756791460173214) -- (axis cs:0.5,0.756791460173214);
+\node at (axis cs:0.5,0.756791460173214)[
+  scale=0.9,
+  fill=ubGrey,
+  draw=black,
+  line width=0.6pt,
+  inner sep=2.2pt,
+  text=black,
+  rotate=0.0
+]{* | p=0.048};
+\end{axis}
+
+\end{tikzpicture}
