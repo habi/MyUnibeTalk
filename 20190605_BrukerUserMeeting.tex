@@ -31,6 +31,9 @@
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage{tikz}
+	\usetikzlibrary{spy}
+\usepackage{pgfplots}
+	\pgfplotsset{compat=newest}
 \usepackage[detect-all=true, range-phrase=--, range-units=single, binary-units=true]{siunitx}
 \usepackage[absolute,overlay]{textpos} %for the \source{} command
 \usepackage{gitinfo2}
@@ -39,20 +42,17 @@
 \usepackage{ccicons}
 \usepackage{multimedia}
 \usepackage{animate}
-
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usepackage[eulergreek]{sansmath}
+\usepackage[eulergreek]{sansmath} % change tikz font to font of slides
 \pgfplotsset{
-  tick label style = {font=\sansmath\sffamily},
-  every axis label = {font=\sansmath\sffamily},
-  legend style = {font=\sansmath\sffamily},
-  label style = {font=\sansmath\sffamily}
-}
+	tick label style = {font=\sansmath\sffamily},
+	every axis label = {font=\sansmath\sffamily},
+	legend style = {font=\sansmath\sffamily},
+	label style = {font=\sansmath\sffamily}
+	}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{1} % use only every nth frame for the movies
+\newcommand{\everyframe}{25} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -170,10 +170,10 @@
 
 \begin{frame}
 	\frametitle{Biology}
-	% Image from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
 	\centering
+	% Image from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
 	\includegraphics[width=0.618\linewidth]{./img/gills-an-o2}%
-	\source{Campbell Biology: Concepts \& Connections}{\cite{Taylor2017}}
+	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
 
 \begin{frame}
@@ -189,32 +189,44 @@
 \begin{frame}
 	\frametitle{How?}
 		\begin{columns}
-	\begin{column}{0.618\linewidth}
+	\begin{column}{0.5\linewidth}
 		\begin{itemize}
-			\item<1-> Fish training according to \textcite{Palstra2010}
-			\item<3-> Morphological measurement
-			\item<4-> Respirometry
-			\item<5-> Electron microscopy
-			\item<6-> \uct imaging
+			\item<1-> Training according to \textcite{Palstra2010}
+			\item<4-> Morphological measurement
+			\item<5-> Respirometry
+			\item<6-> Electron microscopy
+			\item<7-> \uct imaging
 			\begin{itemize}
-				\item<7-> Delination
-				\item<8-> Analysis
+				\item<8-> Delination
+				\item<9-> Analysis
 			\end{itemize}
 		\end{itemize}
 	\end{column}
-	\begin{column}{0.382\linewidth}
+	\begin{column}{0.5\linewidth}
 		\only<1>{
 			\includegraphics[width=\linewidth]{./img/0001713_swim-tunnel-5-l-230-v-50-hz}%
 			\source{loligosystems.com/swim-tunnel-5-l-230-v-50-hz}{}
 			}
 		\only<2>{
-			\animategraphics[loop,autoplay,width=\linewidth]{25}{./mov/fishvideo/fishvideo_}{0001}{0100}
+			\pgfmathsetlength{\imagewidth}{\imsize}%
+			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
+			\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
+			\def\y{547}% scalebar-y at 90% of image height of 608px = 547
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};
+				% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
+				\draw[|-|,blue,thick] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter}};
+				\draw[|-|,white,thick] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
+			\end{tikzpicture}%			
+			}						
+		\only<3>{
+			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{125}
 			}
-		\only<5>{EM-Bilder}
-		\includegraphics<6>[width=\linewidth]{./img/Overviews}%
-		\includegraphics<7>[width=\linewidth]{./img/CTAn}%
-		\only<8>{
-			\animategraphics[loop,autoplay,width=\linewidth]{25}{./mov/coder/coder-}{0}{133}
+		\only<6>{EM-Bilder}
+		\includegraphics<7>[width=\linewidth]{./img/Overviews}%
+		\includegraphics<8>[width=\linewidth]{./img/CTAn}%
+		\only<9>{
+			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}
 			}
 		\end{column}	
 	\end{columns}	
@@ -232,20 +244,13 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Fish morphology}
-	\includegraphics<1>[width=\linewidth]{./img/Endurance}
-	\includegraphics<2>[width=\linewidth]{./img/Lengths}
-	\includegraphics<3>[width=\linewidth]{./img/Weights}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Fish morphology}
-	\only<1>{\include{/img/Endurance}}
+	\centering
+	\only<1>{\include{./img/Endurance}}
 	\only<2>{\include{./img/Lengths}}
 	\only<3>{\include{./img/Weights}}
 \end{frame}
-
 
 \note{
 	Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside. Length of the fish was measured after anaesthesia with tricaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.
@@ -284,7 +289,6 @@
 	\frametitle{\ce{O2} consumption}
 	\include{./img/O2_normalized}
 \end{frame}
-
 
 \begin{frame}
 	\frametitle{Wee!}
@@ -333,11 +337,12 @@
 	\printbibliography
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Colophon}
 	\begin{itemize}
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{Template from Corporate Design und Vorlagen, University of Bern}
-		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{Full (\LaTeX) source code of this \textsc{beamer} presentation is available on GitHub}
+		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{(\LaTeX) source of this \textsc{beamer} presentation is available on GitHub.
+		Direct link is in the footer\ldots}
 	\end{itemize}
 \end{frame}
 

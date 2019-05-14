@@ -1,180 +1,245 @@
 % This file was created by matplotlib2tikz v0.7.4.
 \begin{tikzpicture}
 
-\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
+%\definecolor{ubRed}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
-axis line style={white!80.0!black},
-legend cell align={left},
-legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black},
-tick align=outside,
-x grid style={white!80.0!black},
-xmajorticks=false,
+%axis line style={white!80.0!black},
+%legend cell align={left},
+%legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black},
+%tick align=outside,
+%x grid style={white!80.0!black},
+%xmajorticks=false,
 xmin=-0.5, xmax=1.5,
-xtick style={color=white!15.0!black},
+%xtick style={color=white!15.0!black},
 xtick={0,1},
 xticklabels={Before Training,After Training},
-y grid style={white!80.0!black},
-ylabel={Fish weight [g]},
-ymajorgrids,
-ymajorticks=false,
-ymin=0, ymax=0.5205,
-ytick style={color=white!15.0!black},
+%y grid style={white!80.0!black},
+ylabel={Fish weight [\si{\gram}]},
+%ymajorgrids,
+%ymajorticks=false,
+ymin=0, %ymax=0.52206870848298,
+%ytick style={color=white!15.0!black},
 ytick={0,0.1,0.2,0.3,0.4,0.5},
 yticklabels={0.0,0.1,0.2,0.3,0.4,0.5}
 ]
-\path [draw=white!25.098039215686274!black, fill=white!85.09803921568627!black, line width=0.9pt]
+\path [draw=black, fill=ubGrey]
 (axis cs:-0.396,0.3275)
 --(axis cs:-0.004,0.3275)
 --(axis cs:-0.004,0.4125)
 --(axis cs:-0.396,0.4125)
 --(axis cs:-0.396,0.3275)
 --cycle;
-\path [draw=white!25.098039215686274!black, fill=color0, line width=0.9pt]
+\path [draw=black, fill=ubRed]
 (axis cs:0.004,0.3175)
 --(axis cs:0.396,0.3175)
 --(axis cs:0.396,0.415)
 --(axis cs:0.004,0.415)
 --(axis cs:0.004,0.3175)
 --cycle;
-\path [draw=white!25.098039215686274!black, fill=white!85.09803921568627!black, line width=0.9pt]
+\path [draw=black, fill=ubGrey]
 (axis cs:0.604,0.3675)
 --(axis cs:0.996,0.3675)
 --(axis cs:0.996,0.415)
 --(axis cs:0.604,0.415)
 --(axis cs:0.604,0.3675)
 --cycle;
-\path [draw=white!25.098039215686274!black, fill=color0, line width=0.9pt]
+\path [draw=black, fill=ubRed]
 (axis cs:1.004,0.39)
 --(axis cs:1.396,0.39)
 --(axis cs:1.396,0.49)
 --(axis cs:1.004,0.49)
 --(axis cs:1.004,0.39)
 --cycle;
-\draw[draw=white!25.098039215686274!black,fill=white!85.09803921568627!black,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
-\addlegendimage{ybar,ybar legend,draw=white!25.098039215686274!black,fill=white!85.09803921568627!black,line width=0.45pt};
-\addlegendentry{Control}
+\addplot [only marks, draw=black, fill=ubGrey, colormap/blackwhite]
+table{%
+x                      y
+};
+%\addlegendentry{Control}
+\addplot [only marks, draw=ubRed, fill=ubRed, colormap/blackwhite]
+table{%
+x                      y
+};
+%\addlegendentry{Swimmer}
+\draw[draw=black,fill=ubGrey,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
+\addlegendimage{ybar,ybar legend,draw=black,fill=ubGrey,line width=0.45pt};
+%\addlegendentry{Control}
 
-\draw[draw=white!25.098039215686274!black,fill=color0,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
-\addlegendimage{ybar,ybar legend,draw=white!25.098039215686274!black,fill=color0,line width=0.45pt};
-\addlegendentry{Swimmer}
+\draw[draw=black,fill=ubRed,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
+\addlegendimage{ybar,ybar legend,draw=black,fill=ubRed,line width=0.45pt};
+%\addlegendentry{Swimmer}
 
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 -0.2 0.3275
 -0.2 0.3
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 -0.2 0.4125
 -0.2 0.48
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 -0.298 0.3
 -0.102 0.3
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 -0.298 0.48
 -0.102 0.48
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.2 0.3175
 0.2 0.3
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.2 0.415
 0.2 0.43
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.102 0.3
 0.298 0.3
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.102 0.43
 0.298 0.43
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.8 0.3675
 0.8 0.32
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.8 0.415
 0.8 0.45
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.702 0.32
 0.898 0.32
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.702 0.45
 0.898 0.45
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 1.2 0.39
 1.2 0.33
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 1.2 0.49
 1.2 0.51
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 1.102 0.33
 1.298 0.33
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 1.102 0.51
 1.298 0.51
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 -0.396 0.365
 -0.004 0.365
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.004 0.385
 0.396 0.385
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 0.604 0.395
 0.996 0.395
 };
-\addplot [line width=0.9pt, white!25.098039215686274!black, forget plot]
+\addplot [forget plot]
 table {%
 1.004 0.46
 1.396 0.46
 };
-\draw[-,black] (axis cs:1.2,0.5151) -- (axis cs:0.8,0.5151);
-\draw[] (axis cs:1,0.5151) -- (axis cs:1,0.5151);
+\addplot [only marks, draw=black, fill=ubGrey, colormap/blackwhite, forget plot]
+table{%
+x                      y
+-0.227287099929672 0.48
+-0.22142341186635 0.42
+-0.264581046533137 0.39
+-0.185204129433552 0.35
+-0.252424724809406 0.38
+-0.168930539580892 0.3
+-0.23016050537593 0.46
+-0.109939055318927 0.32
+-0.208646412921552 0.35
+-0.226441219276357 0.32
+};
+\addplot [only marks, draw=black, fill=ubRed, colormap/blackwhite, forget plot]
+table{%
+x                      y
+0.281249588328206 0.37
+0.114189220440543 0.42
+0.212085592486886 0.43
+0.173902716119044 0.42
+0.295428735675365 0.39
+0.278883087050523 0.38
+0.299020358112305 0.3
+0.22554882912 0.4
+0.248840248198153 0.3
+0.293712683897697 0.3
+};
+\addplot [only marks, draw=black, fill=ubGrey, colormap/blackwhite, forget plot]
+table{%
+x                      y
+0.721471309137515 0.42
+0.79818855476188 0.45
+0.791547117552829 0.45
+0.872742433594607 0.4
+0.726313544407165 0.32
+0.741483726358967 0.39
+0.885815994592543 0.39
+0.752014933567735 0.36
+0.765483820132916 0.4
+0.873554896295885 0.36
+};
+\addplot [only marks, draw=black, fill=ubRed, colormap/blackwhite, forget plot]
+table{%
+x                      y
+1.19030729398981 0.48
+1.13718157359152 0.39
+1.26310640108494 0.51
+1.14501256691062 0.49
+1.17858303802799 0.33
+1.27887996170297 0.49
+1.16633128751906 0.36
+1.27054641386227 0.46
+1.18396430641649 0.44
+};
+\draw[|-|] (axis cs:1.2,0.5151) -- (axis cs:0.8,0.5151) node [midway,above] {};
+%\draw[] (axis cs:1,0.5151) -- (axis cs:1,0.5151);
 \node at (axis cs:1,0.5151)[
   scale=0.9,
-  fill=white!85.09803921568627!black,
+  fill=ubGrey,
   draw=black,
   line width=0.6pt,
   inner sep=2.2pt,
   text=black,
   rotate=0.0
 ]{* | p=0.041};
-\draw[-,black] (axis cs:1.2,0.28785) -- (axis cs:0.2,0.28785);
+\draw[|-|] (axis cs:1.2,0.28785) -- (axis cs:0.2,0.28785) node [midway,above] {};
 \draw[] (axis cs:0.7,0.28785) -- (axis cs:0.7,0.28785);
 \node at (axis cs:0.7,0.28785)[
   scale=0.9,
-  fill=white!85.09803921568627!black,
+  fill=ubGrey,
   draw=black,
   line width=0.6pt,
   inner sep=2.2pt,
