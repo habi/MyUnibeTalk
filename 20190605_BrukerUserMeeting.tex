@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-%\documentclass[aspectratio=169,10pt,draft]{beamer}
-\documentclass[aspectratio=169, 10pt]{beamer}
+\documentclass[aspectratio=169,10pt,draft]{beamer}
+%\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -14,7 +14,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-\includeonlyframes{current}
+%\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -31,7 +31,8 @@
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage{tikz}
-	\usetikzlibrary{spy}
+%	\usetikzlibrary{external}
+%	\tikzexternalize[prefix=tikz/]
 \usepackage{pgfplots}
 	\pgfplotsset{compat=newest}
 \usepackage[detect-all=true, range-phrase=--, range-units=single, binary-units=true]{siunitx}
@@ -42,13 +43,14 @@
 \usepackage{ccicons}
 \usepackage{multimedia}
 \usepackage{animate}
-\usepackage[eulergreek]{sansmath} % change tikz font to font of slides
+\usepackage[eulergreek]{sansmath} % change tikz font to font of slides, from https://tex.stackexchange.com/a/33329/828
 \pgfplotsset{
 	tick label style = {font=\sansmath\sffamily},
 	every axis label = {font=\sansmath\sffamily},
 	legend style = {font=\sansmath\sffamily},
 	label style = {font=\sansmath\sffamily}
 	}
+\usepackage{fontawesome5}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
@@ -100,7 +102,6 @@
 	\clearfield{issn}
 }
 
-
 \begin{document}
 % We want no footline on the title page, http://tex.stackexchange.com/a/18829/828 helps
 {%
@@ -135,7 +136,9 @@
 
 \begin{frame}
 	\frametitle{Why?}
+	\only<1>{\fullframeimage{./img/{{control06.abstract}}}}
 	\begin{itemize}
+		\item Zebrafish (\emph{Danio rerio}) as model organism
 		\item Adaptation of respiratory organ to endurance training
 		\item Study \ce{O2} metabolism
 	\end{itemize}
@@ -144,34 +147,28 @@
 \begin{frame}
 	\frametitle{Oxygen pathway}
 	\begin{columns}
-		\begin{column}{0.618\linewidth}
+		\begin{column}{0.5\linewidth}
 			\begin{itemize}
 				\item<1-> Insects: Spiracles \& Trachea
 				\item<2-> Bony fishes: Gills
 				\item<3-> Mammals: Lungs
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.382\linewidth}
-			\only<1>{%
-				\includegraphics[width=\imsize]{./img/2746294525_52566921c8_o}
-				\source{flic.kr/p/5bFtFB}{\ccbyncsa}
-				}
-			\only<2>{%
-				\includegraphics[width=\imsize]{./img/Bump_head_sunfish}%
-				\source{enwp.org/molidae}{\ccbysa}
-				}
-			\only<3>{%
-				\includegraphics[width=\imsize]{./img/Anim1754_-_Flickr_-_NOAA_Photo_Library}%
-				\source{enwp.org/bluewhale}{\ccPublicDomain}
-				}
+		\begin{column}{0.5\linewidth}
+			\includegraphics<1>[width=\imsize]{./img/2746294525_52566921c8_o}%
+			\only<1>{\source{flic.kr/p/5bFtFB}{\ccbyncsa}}%
+			\includegraphics<2>[width=\imsize]{./img/Bump_head_sunfish}%
+			\only<2>{\source{enwp.org/molidae}{\ccbysa}}%
+			\includegraphics<3>[width=\imsize]{./img/Anim1754_-_Flickr_-_NOAA_Photo_Library}%
+			\only<3>{\source{enwp.org/bluewhale}{\ccPublicDomain}}%
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Biology}
-	\centering
-	% Image from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
+%	\centering
+	% Image adapted from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
 	\includegraphics[width=0.618\linewidth]{./img/gills-an-o2}%
 	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
@@ -181,8 +178,11 @@
 	\begin{itemize}
 		\item Increased body length and weight
 		\item Skeletal and heart muscle hypertrophy
-		\item Induction of angiogenesis in skeletal muscle
-		\item Increase in haematocrit
+		\item Induction of angiogenesis in muscles (\faMale: \cite{Andersen1977},
+													\faOtter: \cite{Baum2018},
+													\faFish: \cite{Sanger1992})
+		\item Increase in hemoglobin levels
+		\item<2> Lungs?\uncover Unclear results.
 	\end{itemize}
 \end{frame}
 
@@ -197,7 +197,7 @@
 			\item<6-> Electron microscopy
 			\item<7-> \uct imaging
 			\begin{itemize}
-				\item<8-> Delination
+				\item<8-> Delineation
 				\item<9-> Analysis
 			\end{itemize}
 		\end{itemize}
@@ -217,8 +217,8 @@
 				% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
 				\draw[|-|,blue,thick] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter}};
 				\draw[|-|,white,thick] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
-			\end{tikzpicture}%			
-			}						
+			\end{tikzpicture}%
+			}
 		\only<3>{
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{125}
 			}
@@ -228,8 +228,8 @@
 		\only<9>{
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}
 			}
-		\end{column}	
-	\end{columns}	
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -244,18 +244,33 @@
 	\end{itemize}
 \end{frame}
 
+%\begin{frame}[label=current]
+%  \frametitle{Example:}
+%  \onslide<2->{
+%    \begin{tikzpicture}
+%      \draw (0,0) rectangle (2,2);
+%      \onslide<3->{
+%          \draw (1,1) circle [radius=1cm];
+%      }
+%    \end{tikzpicture}
+%  }
+%  \onslide<4->{
+%    Comment
+%  }
+%\end{frame}
+
 \begin{frame}[label=current]
 	\frametitle{Fish morphology}
 	\centering
-	\only<1>{\include{./img/Endurance}}
-	\only<2>{\include{./img/Lengths}}
-	\only<3>{\include{./img/Weights}}
+	\include{./img/Endurance}
+%	\only<3>{\include{./img/Lengths}}
+%	\only<4>{\include{./img/Weights}}
 \end{frame}
 
 \note{
-	Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside. Length of the fish was measured after anaesthesia with tricaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.
+	Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside. Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.
 	}
-	
+
 \note{
 	whis: float, sequence, or string (default = 1.5)
 	As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
@@ -263,7 +278,7 @@
 	Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
 	Beyond the whiskers, data are considered outliers and are plotted as individual points.
 	}
-	
+
 \begin{frame}
 	\frametitle{EM}
 	\include{./img/Filament_length}
@@ -272,6 +287,15 @@
 \begin{frame}
 	\frametitle{Gill volume}
 	\include{./img/Gillvolume}
+\end{frame}
+
+\begin{frame}[label=current]
+	\frametitle{Gill complexity}
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[xshift=0,yshift=-0.085\paperheight-0.016\paperheight/2] at (current page.center){%
+		\animategraphics[loop,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{001}{256}%
+			};%
+		\end{tikzpicture}%
 \end{frame}
 
 \begin{frame}
@@ -323,8 +347,8 @@
 		\end{column}
 		\begin{column}{0.382\linewidth}
 			\includegraphics<1->[width=\linewidth]{./img/team}
-		\end{column}	
-	\end{columns}	
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -342,7 +366,7 @@
 	\begin{itemize}
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{Template from Corporate Design und Vorlagen, University of Bern}
 		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{(\LaTeX) source of this \textsc{beamer} presentation is available on GitHub.
-		Direct link is in the footer\ldots}
+		A direct link to the presented version is in the footer\ldots}
 	\end{itemize}
 \end{frame}
 
