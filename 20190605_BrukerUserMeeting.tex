@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-\documentclass[aspectratio=169,10pt,draft]{beamer}
-%\documentclass[aspectratio=169, 10pt]{beamer}
+%\documentclass[aspectratio=169,10pt,draft]{beamer}
+\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -14,7 +14,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-\includeonlyframes{current}
+%\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -31,8 +31,8 @@
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage{tikz}
-%	\usetikzlibrary{external}
-%	\tikzexternalize[prefix=tikz/]
+	%\usetikzlibrary{external}
+	%\tikzexternalize[prefix=tikz/]
 \usepackage{pgfplots}
 	\pgfplotsset{compat=newest}
 \usepackage[detect-all=true, range-phrase=--, range-units=single, binary-units=true]{siunitx}
@@ -43,14 +43,20 @@
 \usepackage{ccicons}
 \usepackage{multimedia}
 \usepackage{animate}
-\usepackage[eulergreek]{sansmath} % change tikz font to font of slides, from https://tex.stackexchange.com/a/33329/828
-\pgfplotsset{
-	tick label style = {font=\sansmath\sffamily},
-	every axis label = {font=\sansmath\sffamily},
-	legend style = {font=\sansmath\sffamily},
-	label style = {font=\sansmath\sffamily}
-	}
+\usepackage{listings}
+	\lstset{
+		frame=shadowbox,
+		rulesepcolor=\color{ubRed},
+		basicstyle=\scriptsize
+		}
 \usepackage{fontawesome5}
+\usepackage[eulergreek]{sansmath} % change tikz font to font of slides, from https://tex.stackexchange.com/a/33329/828
+	\pgfplotsset{
+		tick label style = {font=\sansmath\sffamily},
+		every axis label = {font=\sansmath\sffamily},
+		legend style = {font=\sansmath\sffamily},
+		label style = {font=\sansmath\sffamily}
+		}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
@@ -135,16 +141,6 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Why?}
-	\only<1>{\fullframeimage{./img/{{control06.abstract}}}}
-	\begin{itemize}
-		\item Zebrafish (\emph{Danio rerio}) as model organism
-		\item Adaptation of respiratory organ to endurance training
-		\item Study \ce{O2} metabolism
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Oxygen pathway}
 	\begin{columns}
 		\begin{column}{0.5\linewidth}
@@ -166,8 +162,22 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Why?}
+	\fullframeimage{./img/{{control06.abstract}}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why?}
+	\begin{itemize}
+		\item Zebrafish (\emph{Danio rerio}) as model organism
+		\item Adaptation of respiratory organ to endurance training
+		\item Study \ce{O2} metabolism
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Biology}
-%	\centering
+	\centering
 	% Image adapted from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
 	\includegraphics[width=0.618\linewidth]{./img/gills-an-o2}%
 	\source{Campbell Biology}{\cite{Taylor2017}}
@@ -178,41 +188,40 @@
 	\begin{itemize}
 		\item Increased body length and weight
 		\item Skeletal and heart muscle hypertrophy
-		\item Induction of angiogenesis in muscles (\faMale: \cite{Andersen1977},
+		\item Induction of angiogenesis in muscles (\faMale\xspace\cite{Andersen1977},
 													\begin{tikzpicture}
 														\def\size{0.618 ex}
 														\filldraw (0,0) circle (\size);
 														\filldraw (\size,\size) circle (0.618*\size);
 														\filldraw (-\size,\size) circle (0.618*\size);
-													\end{tikzpicture}: \cite{Baum2018},
-													\faFish: \cite{Sanger1992})
+													\end{tikzpicture}\xspace\cite{Baum2018},
+													\faFish\xspace\cite{Sanger1992})
 		\item Increase in hemoglobin levels
-		\item<2> Lungs?\uncover Unclear results.
+		\item<2-> Lungs? \only<3->{Unclear results}
+		\item<4-> Zebrafish \only<5->{\faHands}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{How?}
 		\begin{columns}
 	\begin{column}{0.5\linewidth}
 		\begin{itemize}
 			\item<1-> Training according to \textcite{Palstra2010}
-			\item<4-> Morphological measurement
-			\item<5-> Respirometry
-			\item<6-> Electron microscopy
-			\item<7-> \uct imaging
+			\item<3-> Morphology \& Physiology
 			\begin{itemize}
-				\item<8-> Delineation
-				\item<9-> Analysis
+				\item<3-> Length
+				\item<3-> Weight
+				\item<3-> Respirometry
 			\end{itemize}
+			\item<4-> Electron microscopy
+			\item<5-> \uct imaging
+			\item<7-> Delineation
+			\item<8-> Analysis
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.5\linewidth}
 		\only<1>{
-			\includegraphics[width=\linewidth]{./img/0001713_swim-tunnel-5-l-230-v-50-hz}%
-			\source{loligosystems.com/swim-tunnel-5-l-230-v-50-hz}{}
-			}
-		\only<2>{
 			\pgfmathsetlength{\imagewidth}{\imsize}%
 			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
 			\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
@@ -224,13 +233,20 @@
 				\draw[|-|,white,thick] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
 			\end{tikzpicture}%
 			}
-		\only<3>{
+		\only<2>{
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{125}
 			}
-		\only<6>{EM-Bilder}
-		\includegraphics<7>[width=\linewidth]{./img/Overviews}%
-		\includegraphics<8>[width=\linewidth]{./img/CTAn}%
-		\only<9>{
+		\only<4>{%
+			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}%
+			\includegraphics[width=0.5\linewidth]{./img/{{EM.s5.3}}}%
+			}
+		\only<5>{%
+			\lstinputlisting[xleftmargin=5ex,
+				linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
+			}
+		\includegraphics<6>[width=\linewidth]{./img/Overviews}%
+		\includegraphics<7>[width=\linewidth]{./img/CTAn}%
+		\only<8>{
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}
 			}
 		\end{column}
@@ -240,8 +256,8 @@
 \begin{frame}
 	\frametitle{What?}
 	\begin{itemize}
+		\item Body size \& weight
 		\item Endurance
-		\item Body size
 		\item Gill structure
 		\item Gill volume
 		\item Gill complexity
@@ -249,69 +265,58 @@
 	\end{itemize}
 \end{frame}
 
-%\begin{frame}[label=current]
-%  \frametitle{Example:}
-%  \onslide<2->{
-%    \begin{tikzpicture}
-%      \draw (0,0) rectangle (2,2);
-%      \onslide<3->{
-%          \draw (1,1) circle [radius=1cm];
-%      }
-%    \end{tikzpicture}
-%  }
-%  \onslide<4->{
-%    Comment
-%  }
-%\end{frame}
-
 \begin{frame}
-	\frametitle{Fish morphology}
-	\centering
-	\include{./img/Endurance}
-%	\only<3>{\include{./img/Lengths}}
-%	\only<4>{\include{./img/Weights}}
+	\frametitle{Body size}
+	\include{./img/Lengths}
 \end{frame}
 
-\note{
-	Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside. Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.
-	}
+\note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
 
-\note{
-	whis: float, sequence, or string (default = 1.5)
+\note{whis: float, sequence, or string (default = 1.5)
 	As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
 	In other words, where IQR is the interquartile range (Q3-Q1), the upper whisker will extend to last datum less than Q3 + whis*IQR).
 	Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
-	Beyond the whiskers, data are considered outliers and are plotted as individual points.
-	}
+	Beyond the whiskers, data are considered outliers and are plotted as individual points.}
 
 \begin{frame}
-	\frametitle{EM}
+	\frametitle{Body weight}
+	\include{./img/Weights}
+\end{frame}
+
+\note{Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.}
+
+\begin{frame}
+	\frametitle{Endurance}
+	\include{./img/Endurance}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill structure}
 	\include{./img/Filament_length}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Gill volume}
-	\include{./img/Gillvolume}
+	\includegraphics<1>[height=\textheight]{./img/Control03_rec00001865}
+	\includegraphics<2>[height=\textheight]{./img/control03_rec0000_voi_1865}
+	\includegraphics<3>[height=\textheight]{./img/Control03_thresholded_1500}
+	\only<4>{\include{./img/Gillvolume}}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Gill complexity}
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node[xshift=0,yshift=-0.085\paperheight-0.016\paperheight/2] at (current page.center){%
-		\animategraphics[loop,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{001}{256}%
+			\animategraphics[loop,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{001}{256}%
 			};%
-		\end{tikzpicture}%
+	\end{tikzpicture}%
 \end{frame}
 
 \begin{frame}
 	\frametitle{Gill complexity}
-	\include{./img/Gills_per_organ}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Gill complexity}
-	\includegraphics<1>[height=\textheight]{./img/control03}
-	\source{Show the hull and gills}{TEMPORARY}
+	\includegraphics<1>[height=\textheight]{./img/Control03_thresholded_1500}
+	\includegraphics<2>[height=\textheight]{./img/control03_rec0000_voi_1865}
+	\only<3>{\include{./img/Gills_per_organ}}
 \end{frame}
 
 \begin{frame}
@@ -322,7 +327,15 @@
 \begin{frame}
 	\frametitle{Wee!}
 	\begin{itemize}
-		\item We conclude that the zebrafish respiratory organ has a high plasticity, and after endurance training increases its volume and changes its structure in order to facilitate \ce{O2} uptake.
+		\item The zebrafish respiratory organ has a high plasticity
+		\item After endurance training respiratory organ is larger and more airy, facilitating \ce{O2} uptake.
+		\item Increase in critical speed, body weight and body length
+		\item Increase in oxygen consumption of trained zebrafish
+		\item Morphological differences in gills
+		\item Longer primary filaments and more secondary filaments
+		\item Increase of total gill volume
+		\pause
+		\item \emph{Adaptation of the respiratory organ to endurance training has been showed for the first time}
 	\end{itemize}
 \end{frame}
 
@@ -358,7 +371,7 @@
 
 \begin{frame}
 	\frametitle{References}
-	%\renewcommand*{\bibfont}{\tiny}
+	\renewcommand*{\bibfont}{\footnotesize}
 	% No parentheses around the (empty) year: https://tex.stackexchange.com/a/147537
 	%\renewcommand{\bibopenparen}{\addcomma\addspace}
 	%\renewcommand{\bibcloseparen}{\addcomma\addspace}
