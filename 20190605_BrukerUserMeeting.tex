@@ -14,7 +14,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-%\includeonlyframes{current}
+\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -173,13 +173,18 @@
 	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Adaptation to training exercise}
 	\begin{itemize}
 		\item Increased body length and weight
 		\item Skeletal and heart muscle hypertrophy
 		\item Induction of angiogenesis in muscles (\faMale: \cite{Andersen1977},
-													\faOtter: \cite{Baum2018},
+													\begin{tikzpicture}
+														\def\size{0.618 ex}
+														\filldraw (0,0) circle (\size);
+														\filldraw (\size,\size) circle (0.618*\size);
+														\filldraw (-\size,\size) circle (0.618*\size);
+													\end{tikzpicture}: \cite{Baum2018},
 													\faFish: \cite{Sanger1992})
 		\item Increase in hemoglobin levels
 		\item<2> Lungs?\uncover Unclear results.
@@ -259,7 +264,7 @@
 %  }
 %\end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Fish morphology}
 	\centering
 	\include{./img/Endurance}
@@ -289,7 +294,7 @@
 	\include{./img/Gillvolume}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Gill complexity}
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node[xshift=0,yshift=-0.085\paperheight-0.016\paperheight/2] at (current page.center){%
@@ -361,7 +366,7 @@
 	\printbibliography
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Colophon}
 	\begin{itemize}
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{Template from Corporate Design und Vorlagen, University of Bern}
