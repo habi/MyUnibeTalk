@@ -14,7 +14,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-\includeonlyframes{current}
+%\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -50,7 +50,7 @@
 		basicstyle=\scriptsize
 		}
 \usepackage{fontawesome5}
-\usepackage[eulergreek]{sansmath} % change tikz font to font of slides, from https://tex.stackexchange.com/a/33329/828
+\usepackage[eulergreek]{sansmath} % change tikz font to slide font, courtesy of https://tex.stackexchange.com/a/33329/828
 	\pgfplotsset{
 		tick label style = {font=\sansmath\sffamily},
 		every axis label = {font=\sansmath\sffamily},
@@ -239,7 +239,7 @@
 			}
 		\only<2>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/fishvideo/README.md
-			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{125}
+			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}
 			}
 		\only<4>{%
 			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}%
@@ -388,20 +388,6 @@
 	\only<4>{\include{./img/Gills_per_organ}}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Movie test}
-	\pgfmathsetlength{\imagewidth}{0.618\linewidth}%
-	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
-	\def\x{1337}% scalebar-x starting at golden ratio of image width of 2163px = 1337
-	\def\y{1191}% scalebar-y at 90% of image height of 1323px = 1191
-	\def\shadow{4}% shadow parameter for scalebar	
-	\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-		\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includemedia[width=0.618\linewidth]{\includegraphics{./mov/fishvideo/fishvideo_0001}}{./mov/fishvideo/fishvideo.mp4}};
-		\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
-		\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
-	\end{tikzpicture}%
-\end{frame}
-
 \begin{frame}[label=current]
 	\frametitle{\ce{O2} consumption}
 	\include{./img/O2_normalized}
@@ -465,9 +451,9 @@
 \begin{frame}
 	\frametitle{Colophon}
 	\begin{itemize}
-		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{Template from Corporate Design und Vorlagen, University of Bern}
-		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{(\LaTeX) source of this \textsc{beamer} presentation is available on GitHub.
-		A direct link to the presented version is in the footer\ldots}
+			\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The \LaTeX source of this \textsc{beamer} presentation is available on GitHub.}
+		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (in \faPython) is also available on GitHub}
+		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
 \end{frame}
 
