@@ -15,5 +15,5 @@ This reduced the video from 252 MB to 7 MB.
 I then burst the video into its frames with 
 
 ```
-ffmpeg -i fishvideo.mp4 fishvideo_%04d.png
+ffmpeg -i fishvideo.mp4 fishvideo_%04d.jpg
 ```
