@@ -44,24 +44,56 @@
 \usepackage{multimedia}
 \usepackage{animate}
 \usepackage{listings}
-	\lstset{
+	\lstset{%
 		frame=shadowbox,
 		rulesepcolor=\color{ubRed},
 		basicstyle=\scriptsize
 		}
 \usepackage{fontawesome5}
-\usepackage[eulergreek]{sansmath} % change tikz font to slide font, courtesy of https://tex.stackexchange.com/a/33329/828
+\usepackage[eulergreek]{sansmath}
+
+% change tikz font to slide font
+% https://tex.stackexchange.com/a/33329/828
 	\pgfplotsset{
 		tick label style = {font=\sansmath\sffamily},
 		every axis label = {font=\sansmath\sffamily},
 		legend style = {font=\sansmath\sffamily},
 		label style = {font=\sansmath\sffamily}
 		}
-\usepackage{media9}		
+
+% thicker plots by default
+% https://tex.stackexchange.com/a/235439/828
+% https://tex.stackexchange.com/q/262486/828
+\pgfplotsset{
+  every axis plot/.append style={semithick},
+  every axis/.append style={semithick}
+  every axis plot post/.append style={every mark/.append style={semithick}
+  }
+}
+
+% generally thicker lines by default
+% https://tex.stackexchange.com/a/206769/828
+\tikzset{every picture/.style={semithick}}
+
+% Tufte-like plots
+% Based on https://tex.stackexchange.com/a/155210/828
+% And then start each plot with `\begin{axis}[tuftelike,'
+\pgfkeys{%
+	/pgfplots/tuftelike/.style={%
+		tick style={major tick length=4pt},
+		separate axis lines,
+		axis x line*=bottom,
+		axis x line shift=5pt,
+		xlabel shift=5pt,
+		axis y line*=left,
+		axis y line shift=5pt,
+		ylabel shift=5pt
+		}
+	}
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{12} % use only every nth frame for the movies
+\newcommand{\everyframe}{1} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -76,20 +108,16 @@
 }
 
 % Acknowledge images just below them
-% Based on https://tex.stackexchange.com/a/206925/828
-%\newcommand{\source}[2]{\par\hfill\tiny \href{http://#1}{#1} #2}
 % Based on https://tex.stackexchange.com/a/282637
 \newcommand{\source}[2]{%
-	\raisebox{-1ex}{\makebox[0pt][r]{\tiny \href{http://#1}{#1} #2}}
+	\raisebox{-1.618ex}{\makebox[0pt][r]{\scriptsize\href{http://#1}{#1} #2}}
 }
 
 % Define us our custom footer
 \defbeamertemplate{footline}{unibe}{%
-	\hspace*{0.6cm}%
-	v. \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}%
 	\hspace*{\fill}%
-	\insertframenumber\,/\,\inserttotalframenumber%
-	\hspace*{1.2cm}%
+	page\xspace\insertframenumber\xspace of \inserttotalframenumber\xspace from version \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}%
+	\hspace*{4ex}%
 	\vskip2pt%
 }
 \setbeamertemplate{footline}[unibe]
@@ -125,7 +153,7 @@
 %	\tableofcontents
 %\end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Hello!}
 	\begin{itemize}
 		\item<1-> University of Bern, Switzerland
@@ -143,7 +171,12 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
+	\frametitle{Introduction}
+	\fullframeimage{./img/{{control06.abstract}}}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Oxygen pathway}
 	\begin{columns}
 		\begin{column}{0.5\linewidth}
@@ -162,11 +195,6 @@
 			\only<3>{\source{enwp.org/bluewhale}{\ccPublicDomain}}%
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why?}
-	\fullframeimage{./img/{{control06.abstract}}}
 \end{frame}
 
 \begin{frame}
@@ -191,17 +219,24 @@
 	\begin{itemize}
 		\item Increased body length and weight
 		\item Skeletal and heart muscle hypertrophy
-		\item Induction of angiogenesis in muscles (\faMale\xspace\cite{Andersen1977},
-													\begin{tikzpicture}
-														\def\size{0.618 ex}
-														\filldraw (0,0) circle (\size);
-														\filldraw (\size,\size) circle (0.618*\size);
-														\filldraw (-\size,\size) circle (0.618*\size);
-													\end{tikzpicture}\xspace\cite{Baum2018},
-													\faFish\xspace\cite{Sanger1992})
+		\item Induction of angiogenesis in muscles
+		\begin{itemize}
+			\item \faMale:\cite{Andersen1977}
+			\item \begin{tikzpicture}
+				\def\size{0.618 ex}
+				\filldraw (0,0) circle (\size);
+				\filldraw (\size,\size) circle (0.618*\size);
+				\filldraw (-\size,\size) circle (0.618*\size);
+				\end{tikzpicture}: \cite{Baum2018}
+			\item \faFish: \cite{Sanger1992}
+		\end{itemize}
 		\item Increase in hemoglobin levels
-		\pause
-		\item<2-> Lungs? \only<3->{Unclear results\ldots}
+		\item<2-> Human lungs? \only<3->{%
+			Inconclusive results
+			\begin{itemize}
+				\item Athletes better than non-athletes: \cite{Baxter-Jones1996}
+				\item Competitive swimming does not affect lung growth: \cite{Bovard2018}
+			\end{itemize}}
 		\item<4-> Zebrafish? \only<5->{Unknown results\ldots}
 	\end{itemize}
 \end{frame}
@@ -233,8 +268,8 @@
 			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};
 				% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
-				\draw[|-|,blue,thick] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter}};
-				\draw[|-|,white,thick] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
+				\draw[|-|,blue] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter} (TEMPORARY)};
+				\draw[|-|,white] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
 			\end{tikzpicture}%
 			}
 		\only<2>{%
@@ -306,45 +341,44 @@
 	\only<1>{%
 		\pgfmathsetlength{\imagewidth}{0.4\linewidth}%
 		\pgfmathsetlength{\imagescale}{\imagewidth/2524}%
-		\def\x{1560}% scalebar-x starting at golden ratio of image width of 2524px = 1560
+		\def\x{2019}% scalebar-x starting at golden ratio of image width of 2524px = 1560
 		\def\y{2272}% scalebar-y at 90% of image height of 2524px = 2272
 		\def\shadow{4}% shadow parameter for scalebar		
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_rec00001865}}}};
 			% 2524px = 4.1874422mm > 100px = 166um > 301px = 500um, 60px = 100um
-			\draw[|-|,blue,thick] (0,1262) -- (2524,1262) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{4.1874422}{\milli\meter} (2524px) TEMPORARY!};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,blue] (0,1262) -- (2524,1262) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{4.18}{\milli\meter} (2524px) TEMPORARY!};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 	}%
 	\pgfmathsetlength{\imagewidth}{0.618\linewidth}%
 	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
-	\def\x{1337}% scalebar-x starting at golden ratio of image width of 2163px = 1337
+	\def\x{1730}% scalebar-x starting at golden ratio of image width of 2163px = 1337
 	\def\y{1191}% scalebar-y at 90% of image height of 1323px = 1191
 	\def\shadow{4}% shadow parameter for scalebar
 	\only<2>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_rec00001865.crop}}}};
 			% 2163px = 3.5885251499999997mm > 100px = 166um > 301px = 500um, 60px = 100um
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%
 	\only<3>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{control03_rec0000_voi_1865.crop}}}};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%
 	\only<4>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_thresholded_1500.crop}}}};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
-		}%		
-	\includegraphics<4>[height=\textheight]{./img/Control03_thresholded_1500}
+		}%
 	\only<5>{\include{./img/Gillvolume}}
 \end{frame}
 
@@ -361,39 +395,39 @@
 	\frametitle{Gill complexity}
 	\pgfmathsetlength{\imagewidth}{0.618\linewidth}%
 	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
-	\def\x{1337}% scalebar-x starting at golden ratio of image width of 2163px = 1337
+	\def\x{1730}% scalebar-x starting at golden ratio of image width of 2163px = 1337
 	\def\y{1191}% scalebar-y at 90% of image height of 1323px = 1191
 	\def\shadow{4}% shadow parameter for scalebar	
 	\only<1>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_thresholded_1500.crop}}}};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%		
 	\only<2>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_area_organ_1500.crop.edit}}}};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%		
 	\only<3>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_area_organ_1500.crop.combination}}}};
-			\draw[|-|,thick] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
-			\draw[|-|,white,thick] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
+			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%		
 	\only<4>{\include{./img/Gills_per_organ}}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{\ce{O2} consumption}
 	\include{./img/O2_normalized}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Wee!}
 	\begin{itemize}
 		\item The zebrafish respiratory organ has a high plasticity
@@ -408,7 +442,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Thanks!}
 	\begin{columns}
 		\begin{column}{0.618\linewidth}
@@ -440,7 +474,7 @@
 
 \begin{frame}
 	\frametitle{References}
-	\renewcommand*{\bibfont}{\footnotesize}
+	\renewcommand*{\bibfont}{\scriptsize}
 	% No parentheses around the (empty) year: https://tex.stackexchange.com/a/147537
 	%\renewcommand{\bibopenparen}{\addcomma\addspace}
 	%\renewcommand{\bibcloseparen}{\addcomma\addspace}
@@ -451,8 +485,8 @@
 \begin{frame}
 	\frametitle{Colophon}
 	\begin{itemize}
-			\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The \LaTeX source of this \textsc{beamer} presentation is available on GitHub.}
-		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (in \faPython) is also available on GitHub}
+			\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub.}
+		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
 \end{frame}
