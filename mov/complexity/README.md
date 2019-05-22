@@ -7,3 +7,5 @@ With ImageMagick I made the (white) background of the single frames transparent 
 ```bash
 mogrify -format png -fuzz 5% -transparent "#FFFFFF" -resize 1080 *.png
 ```
+
+Afterwards I ran all the images through [TinyPNG](https://github.com/kyleduo/TinyPNG4Mac) to reduce their file size.
