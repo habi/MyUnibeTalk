@@ -6,6 +6,7 @@
 %\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
+tuftelike,
 scale only axis,
 width=0.618\textwidth,
 height=0.618\textheight,
@@ -15,7 +16,7 @@ height=0.618\textheight,
 %tick align=outside,
 %x grid style={white!80.0!black},
 %xmajorticks=false,
-xmin=-0.5, xmax=1.5,
+%xmin=-0.5, xmax=1.5,
 %xtick style={color=white!15.0!black},
 xtick={0,1},
 xticklabels={Before Training,After Training},
@@ -28,7 +29,7 @@ ymin=0, %ymax=0.52206870848298,
 %ytick={0,0.1,0.2,0.3,0.4,0.5},
 %yticklabels={0.0,0.1,0.2,0.3,0.4,0.5}
 ]
-\path [draw=black, fill=ubGrey]
+\path [draw=black, fill=lightgray]
 (axis cs:-0.396,0.3275)
 --(axis cs:-0.004,0.3275)
 --(axis cs:-0.004,0.4125)
@@ -42,7 +43,7 @@ ymin=0, %ymax=0.52206870848298,
 --(axis cs:0.004,0.415)
 --(axis cs:0.004,0.3175)
 --cycle;
-\path [draw=black, fill=ubGrey]
+\path [draw=black, fill=lightgray]
 (axis cs:0.604,0.3675)
 --(axis cs:0.996,0.3675)
 --(axis cs:0.996,0.415)
@@ -56,7 +57,7 @@ ymin=0, %ymax=0.52206870848298,
 --(axis cs:1.004,0.49)
 --(axis cs:1.004,0.39)
 --cycle;
-%\addplot [only marks, draw=ubGrey, fill=ubGrey]
+%\addplot [only marks, draw=lightgray, fill=lightgray]
 %table{%
 %x                      y
 %};
@@ -66,8 +67,8 @@ ymin=0, %ymax=0.52206870848298,
 %x                      y
 %};
 %\addlegendentry{Swimmer}
-%\draw[draw=white!25.098039215686274!black,fill=ubGrey,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
-%\addlegendimage{ybar,ybar legend,draw=white!25.098039215686274!black,fill=ubGrey,line width=0.45pt};
+%\draw[draw=white!25.098039215686274!black,fill=lightgray,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
+%\addlegendimage{ybar,ybar legend,draw=white!25.098039215686274!black,fill=lightgray,line width=0.45pt};
 %\addlegendentry{Control}
 
 %\draw[draw=white!25.098039215686274!black,fill=ubRed,line width=0.45pt] (axis cs:0,0) rectangle (axis cs:0,0);
@@ -174,7 +175,7 @@ table {%
 1.004 0.46
 1.396 0.46
 };
-\addplot [only marks, draw=black, fill=ubGrey]
+\addplot [only marks, draw=black, fill=lightgray]
 table{%
 x                      y
 -0.27539234451004 0.48
@@ -202,7 +203,7 @@ x                      y
 0.176917980422822 0.3
 0.131556997000599 0.3
 };
-\addplot [only marks, draw=black, fill=ubGrey]
+\addplot [only marks, draw=black, fill=lightgray]
 table{%
 x                      y
 0.805860976646919 0.42
@@ -229,22 +230,22 @@ x                      y
 1.18054884765675 0.46
 1.13981809825435 0.44
 };
-\draw[|-|] (axis cs:1.2,0.5151) -- (axis cs:0.8,0.5151) node [midway,above] {\tiny * | p=\num{0.041}};
+\draw[|-|, thin, gray] (axis cs:1.2,0.5151) -- (axis cs:0.8,0.5151) node [midway,above] {\scriptsize * | p=\num{0.041}};
 %\draw[] (axis cs:1,0.5151) -- (axis cs:1,0.5151);
 %\node at (axis cs:1,0.5151)[
 %  scale=0.9,
-%  fill=ubGrey,
+%  fill=lightgray,
 %  draw=black,
 %  line width=0.6pt,
 %  inner sep=2.2pt,
 %  text=black,
 %  rotate=0.0
 %]{* | p=0.041};
-\draw[|-|] (axis cs:1.2,0.28785) -- (axis cs:0.2,0.28785) node [midway,below] {\tiny * | p=\num{0.011}};
+\draw[|-|, thin, gray] (axis cs:1.2,0.28785) -- (axis cs:0.2,0.28785) node [midway,below] {\scriptsize * | p=\num{0.011}};
 %\draw[] (axis cs:0.7,0.28785) -- (axis cs:0.7,0.28785);
 %\node at (axis cs:0.7,0.28785)[
 %  scale=0.9,
-%  fill=ubGrey,
+%  fill=lightgray,
 %  draw=black,
 %  line width=0.6pt,
 %  inner sep=2.2pt,
