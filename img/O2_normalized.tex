@@ -6,6 +6,7 @@
 %\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
+tuftelike,
 scale only axis,
 width=0.618\textwidth,
 height=0.618\textheight,
@@ -15,7 +16,7 @@ height=0.618\textheight,
 %tick align=outside,
 %x grid style={white!80.0!black},
 %xmajorticks=false,
-xmin=-0.5, xmax=1.5,
+%xmin=-0.5, xmax=1.5,
 %xtick style={color=white!15.0!black},
 xtick={0,1},
 xticklabels={Before Training,After Training},
@@ -236,7 +237,7 @@ x                      y
 1.1150985499275 0.0314
 1.15275292578462 0.0353793103448276
 };
-\draw[|-|] (axis cs:1.2,0.0578834482758621) -- (axis cs:0.8,0.0578834482758621) node [midway,above] {\tiny * | p=\num{0.0081}};
+\draw[|-|, thin, gray] (axis cs:1.2,0.0578834482758621) -- (axis cs:0.8,0.0578834482758621) node [midway,above] {\scriptsize * | p=\num{0.0081}};
 %\draw[] (axis cs:1,0.0578834482758621) -- (axis cs:1,0.0578834482758621);
 %\node at (axis cs:1,0.0578834482758621)[
 %  scale=0.9,
