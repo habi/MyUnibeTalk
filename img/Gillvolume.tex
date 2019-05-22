@@ -6,6 +6,7 @@
 %\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
+tuftelike,
 scale only axis,
 width=0.618\textwidth,
 height=0.618\textheight,
@@ -13,7 +14,7 @@ height=0.618\textheight,
 %tick align=outside,
 %x grid style={white!80.0!black},
 %xmajorticks=false,
-xmin=-0.5, xmax=1.5,
+%xmin=-0.5, xmax=1.5,
 %xtick style={color=white!15.0!black},
 xtick={0,1},
 xticklabels={Control,Swimmer},
@@ -122,7 +123,7 @@ x                      y
 1.12159157456604 0.749298475419024
 1.01159718977894 0.427215702498488
 };
-\draw[|-|] (axis cs:1,0.756791460173214) -- (axis cs:0,0.756791460173214) node [midway,above] {\tiny * | p=\num{0.048}};
+\draw[|-|, thin, gray] (axis cs:1,0.756791460173214) -- (axis cs:0,0.756791460173214) node [midway,above] {\scriptsize * | p=\num{0.048}};
 %\draw[] (axis cs:0.5,0.756791460173214) -- (axis cs:0.5,0.756791460173214);
 %\node at (axis cs:0.5,0.756791460173214)[
 %  scale=0.9,
