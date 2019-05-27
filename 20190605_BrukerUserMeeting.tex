@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-\documentclass[aspectratio=169,10pt,draft]{beamer}
-%\documentclass[aspectratio=169, 10pt]{beamer}
+%\documentclass[aspectratio=169,10pt,draft]{beamer}
+\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -92,7 +92,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{1} % use only every nth frame for the movies
+\newcommand{\everyframe}{50} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -175,7 +175,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Oxygen pathway}
+	\frametitle{Oxygen uptake}
 	\begin{columns}
 		\begin{column}{0.5\linewidth}
 			\begin{itemize}
@@ -193,23 +193,6 @@
 			\only<3>{\source{enwp.org/bluewhale}{\ccPublicDomain}}%
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why?}
-	\begin{itemize}
-		\item Zebrafish (\emph{Danio rerio}) as model organism
-		\item Adaptation of respiratory organ to endurance training
-		\item Study \ce{O2} metabolism
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Biology}
-	\centering
-	% Image adapted from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
-	\includegraphics[width=0.618\linewidth]{./img/gills-an-o2}%
-	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
 
 \begin{frame}
@@ -241,15 +224,33 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Why?}
+	\begin{itemize}
+		\item Zebrafish (\emph{Danio rerio}) as model organism
+		\item Adaptation of respiratory organ to endurance training
+		\item Study \ce{O2} metabolism
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill anatomy}
+	\centering
+	% Image adapted from https://teacheratsea.files.wordpress.com/2011/07/gills-an-o2.jpg
+	\includegraphics[width=0.618\linewidth]{./img/gills-an-o2}%
+	\source{Campbell Biology}{\cite{Taylor2017}}
+\end{frame}
+
+\begin{frame}
 	\frametitle{How?}
 		\begin{columns}
 	\begin{column}{0.5\linewidth}
 		\begin{itemize}
-			\item<1-> Training according to \textcite{Palstra2010}
+			\item<1-> Training according to \textcite{Palstra2010} (Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at $\frac{2}{3}$ of critical speed).
+			\note{Comparable with the training routine of Michael Phelps weekly training routine but the fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults while the Olympic winner for perhaps half of his lifetime and started as child)}
 			\item<3-> Morphology \& Physiology
 			\begin{itemize}
-				\item<3-> Length
-				\item<3-> Weight
+				\item<3-> Body length
+				\item<3-> Body weight
 				\item<3-> Respirometry
 			\end{itemize}
 			\item<4-> Electron microscopy
@@ -276,8 +277,10 @@
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}
 			}
 		\only<4>{%
-			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}%
+			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}\\
+			\source{Control}{}%
 			\includegraphics[width=0.5\linewidth]{./img/{{EM.s5.3}}}%
+			\source{Swimmer}{o}%
 			}
 		\only<5>{%
 			\lstinputlisting[xleftmargin=5ex,
@@ -424,7 +427,9 @@
 \begin{frame}
 	\frametitle{\ce{O2} consumption}
 	\include{./img/O2_normalized}
+	\note{Increase in normalized o2 consumption relatively to control (because otherwise not significant change)}
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{Wee!}
