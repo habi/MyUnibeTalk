@@ -7,8 +7,8 @@
 \author{David Haberthür \and
 	Dea Aaldijk \and
 	Matthias Messerli \and
-	Fluri A.\ M.\ Wieland \and
-	Oleksiy Khoma \and
+	Fluri Wieland \and
+	Oleksiy-Zakhar Khoma \and
 	Helena Röss \and
 	Ruslan Hlushchuk}
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
@@ -115,7 +115,8 @@
 % Define us our custom footer
 \defbeamertemplate{footline}{unibe}{%
 	\hspace*{\fill}%
-	page\xspace\insertframenumber\xspace of \inserttotalframenumber\xspace from version \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}%
+	v. \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}\xspace|%
+	p.\xspace\insertframenumber/\inserttotalframenumber%
 	\hspace*{4ex}%
 	\vskip2pt%
 }
@@ -134,8 +135,12 @@
 	\clearfield{issn}
 	\clearfield{year}
 }
+% No parentheses around the (now empty) year: https://tex.stackexchange.com/a/147537
+\renewcommand{\bibopenparen}{\addcomma\addspace}
+\renewcommand{\bibcloseparen}{\addcomma\addspace}
 
-%\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
+
+\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
 
 \begin{document}
 % We want no footline on the title page, http://tex.stackexchange.com/a/18829/828 helps
@@ -145,11 +150,6 @@
 		\maketitle
 	\end{frame}%
 }
-
-%\begin{frame}
-%	\frametitle{Contents}
-%	\tableofcontents
-%\end{frame}
 
 \begin{frame}
 	\frametitle{Hello!}
@@ -195,7 +195,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Adaptation to training exercise}
 	\begin{overprint}
 	    	\begin{itemize}
@@ -217,6 +217,9 @@
 			\begin{itemize}
 				\item Athletes better than non-athletes: \cite{Baxter-Jones1996}
 				\item Competitive swimming does not affect lung growth: \cite{Bovard2018}
+%			\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}
+				\item Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners \cite{Sable2012,Armour1993}
+				\item Other indices of lung function similar between swimmers, runners and control \cite{Armour1993}
 			\end{itemize}}
 		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
@@ -277,10 +280,10 @@
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}
 			}
 		\only<4>{%
-			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}\\
+			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}
 			\source{Control}{}%
 			\includegraphics[width=0.5\linewidth]{./img/{{EM.s5.3}}}%
-			\source{Swimmer}{o}%
+			\source{Swimmer}{}%
 			}
 		\only<5>{%
 			\lstinputlisting[xleftmargin=5ex,
@@ -446,7 +449,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Thanks!}
 	\begin{columns}
 		\begin{column}{0.618\linewidth}
@@ -455,7 +458,7 @@
 			\begin{itemize}
 				\item<1-> Dea Aaldijk, Matthias Messerli
 				\item<1-> Ruslan Hlushchuk, Valentin Djonov
-				\item<1-> Fluri A.\ M.\ Wieland, Oleksiy Khoma
+				\item<1-> Fluri Wieland, Oleksiy-Zakhar Khoma
 				\item<1-> Sarya Fark, Helena Röss
 			\end{itemize}
 			\item<1-> Other important people at the Institute of Anatomy
@@ -471,7 +474,7 @@
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.382\linewidth}
-			\includegraphics<1->[width=\linewidth]{./img/team}
+			\includegraphics<1->[width=\imsize]{./img/team}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -479,9 +482,6 @@
 \begin{frame}
 	\frametitle{References}
 	\renewcommand*{\bibfont}{\scriptsize}
-	% No parentheses around the (empty) year: https://tex.stackexchange.com/a/147537
-	\renewcommand{\bibopenparen}{\addcomma\addspace}
-	\renewcommand{\bibcloseparen}{\addcomma\addspace}
 	\setbeamertemplate{bibliography item}{\insertbiblabel}
 	\printbibliography
 \end{frame}
