@@ -1,7 +1,7 @@
 % Compile with:
 % latexmk -pdf -pvc -interaction=nonstopmode
-%\documentclass[aspectratio=169,10pt,draft]{beamer}
-\documentclass[aspectratio=169, 10pt]{beamer}
+\documentclass[aspectratio=169,10pt,draft]{beamer}
+%\documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
 \author{David Haberthür \and
@@ -26,8 +26,7 @@
 	url=false,
 	isbn=true,
 	maxbibnames=1,
-	sorting=none,
-	backref=true]{biblatex}
+	sorting=none]{biblatex}
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -131,13 +130,12 @@
 	\clearfield{pages}
 	\clearfield{volume}
 	\clearfield{number}
-	\clearfield{editors}
-	\clearlist{editors}
-	\clearname{editors}
+	\clearname{editor}
 	\clearfield{issn}
+	\clearfield{year}
 }
 
-\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
+%\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
 
 \begin{document}
 % We want no footline on the title page, http://tex.stackexchange.com/a/18829/828 helps
@@ -216,29 +214,30 @@
 
 \begin{frame}
 	\frametitle{Adaptation to training exercise}
-	\begin{itemize}
-		\item Increased body length and weight
-		\item Skeletal and heart muscle hypertrophy
-		\item Induction of angiogenesis in muscles
-		\begin{itemize}
-			\item \faMale:\cite{Andersen1977}
-			\item \begin{tikzpicture}
-				\def\size{0.618 ex}
-				\filldraw (0,0) circle (\size);
-				\filldraw (\size,\size) circle (0.618*\size);
-				\filldraw (-\size,\size) circle (0.618*\size);
-				\end{tikzpicture}: \cite{Baum2018}
-			\item \faFish: \cite{Sanger1992}
-		\end{itemize}
-		\item Increase in hemoglobin levels
-		\item<2-> Human lungs? \only<3->{%
-			Inconclusive results
+	\begin{overprint}
+	    	\begin{itemize}
+			\item Increased body length and weight
+			\item Skeletal and heart muscle hypertrophy
+			\item Induction of angiogenesis in muscles
+			\begin{itemize}
+				\item \faMale: \cite{Andersen1977}
+				\item \begin{tikzpicture}
+					\def\size{0.618 ex}
+					\filldraw (0,0) circle (\size);
+					\filldraw (\size,\size) circle (0.618*\size);
+					\filldraw (-\size,\size) circle (0.618*\size);
+					\end{tikzpicture}: \cite{Baum2018}
+				\item \faFish: \cite{Sanger1992}
+			\end{itemize}
+			\item Increase in hemoglobin levels
+			\item<2-> Human lungs? \onslide<3->{Inconclusive results
 			\begin{itemize}
 				\item Athletes better than non-athletes: \cite{Baxter-Jones1996}
 				\item Competitive swimming does not affect lung growth: \cite{Bovard2018}
 			\end{itemize}}
-		\item<4-> Zebrafish? \only<5->{Unknown results\ldots}
+		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
+	\end{overprint}
 \end{frame}
 
 \begin{frame}
@@ -285,7 +284,7 @@
 				linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
 			}
 		\includegraphics<6>[width=\linewidth]{./img/Overviews}%
-		\includegraphics<7>[width=\linewidth]{./img/CTAn}%
+		\includegraphics<7>[height=0.6\textheight]{./img/CTAn}%
 		\only<8>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}
@@ -438,7 +437,7 @@
 		\item Longer primary filaments and more secondary filaments
 		\item Increase of total gill volume
 		\pause
-		\item \emph{Adaptation of the respiratory organ to endurance training has been showed for the first time}
+		\item \emph{Adaptation of the respiratory organ of zebrafish to endurance training shown for the first time!}
 	\end{itemize}
 \end{frame}
 
@@ -476,8 +475,8 @@
 	\frametitle{References}
 	\renewcommand*{\bibfont}{\scriptsize}
 	% No parentheses around the (empty) year: https://tex.stackexchange.com/a/147537
-	%\renewcommand{\bibopenparen}{\addcomma\addspace}
-	%\renewcommand{\bibcloseparen}{\addcomma\addspace}
+	\renewcommand{\bibopenparen}{\addcomma\addspace}
+	\renewcommand{\bibcloseparen}{\addcomma\addspace}
 	\setbeamertemplate{bibliography item}{\insertbiblabel}
 	\printbibliography
 \end{frame}
