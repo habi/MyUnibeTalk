@@ -2,14 +2,15 @@
 % latexmk -pdf -pvc -interaction=nonstopmode
 %\documentclass[aspectratio=169,10pt,draft]{beamer}
 \documentclass[aspectratio=169, 10pt]{beamer}
+%\documentclass[notes=only]{beamer} % print out the notes
 \usetheme{UniBern}
 \title{Adaptation Mechanisms Of Zebrafish Respiratory Organ To Endurance Training}
-\author{David Haberthür \and
-	Dea Aaldijk \and
-	Matthias Messerli \and
-	Fluri Wieland \and
-	Oleksiy-Zakhar Khoma \and
-	Helena Röss \and
+\author{David Haberthür\and
+	Dea Aaldijk\and
+	Matthias Messerli\and
+	Fluri Wieland\and
+	Oleksiy-Zakhar Khoma\and
+	Helena Röss\and
 	Ruslan Hlushchuk}
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
@@ -19,48 +20,55 @@
 %\begin{frame}[label=current]
 %\end{frame}
 
-\usepackage[english]{babel}
 \usepackage{microtype}
 \usepackage[backend=biber,
 	style=numeric,
 	url=false,
 	isbn=true,
 	maxbibnames=1,
+	maxcitenames=1,
 	sorting=none]{biblatex}
 	\addbibresource{../../Documents/library.bib}
 \usepackage{graphicx}
 \usepackage{tikz}
-	%\usetikzlibrary{external}
-	%\tikzexternalize[prefix=tikz/]
 \usepackage{pgfplots}
 	\pgfplotsset{compat=newest}
-\usepackage[detect-all=true, range-phrase=--, range-units=single, binary-units=true]{siunitx}
-\usepackage[absolute,overlay]{textpos} %for the \source{} command
+\usepackage[detect-all=true,
+	range-phrase=--,
+	range-units=single,
+	binary-units=true,
+	per-mode=symbol,
+	per-symbol=/]{siunitx}
+\usepackage[absolute,
+	overlay]{textpos} %for the \source{} command
 \usepackage{gitinfo2}
 \usepackage[version=4]{mhchem}
 \usepackage{xspace}
 \usepackage{ccicons}
-\usepackage{multimedia}
 \usepackage{animate}
 \usepackage{listings}
 	\lstset{%
-		frame=shadowbox,
-		rulesepcolor=\color{ubRed},
-		basicstyle=\scriptsize
+		frame=single,
+		%backgroundcolor = \color{lightgray},
+		basicstyle=\tiny\ttfamily
+%		basicstyle=\tiny\sffamily
 		}
 \usepackage{fontawesome5}
-\usepackage[eulergreek]{sansmath}
 
 % change tikz font to slide font
 % https://tex.stackexchange.com/a/33329/828
-	\pgfplotsset{
-		tick label style = {font=\sansmath\sffamily},
+\usepackage[eulergreek]{sansmath}
+	\pgfplotsset{tick label style = {font=\sansmath\sffamily},
 		every axis label = {font=\sansmath\sffamily},
 		legend style = {font=\sansmath\sffamily},
 		label style = {font=\sansmath\sffamily}
 		}
 
-% thicker plots by default
+% Globally thicker lines in with tikz
+% https://tex.stackexchange.com/a/206769/828
+\tikzset{every picture/.style={semithick}}
+
+% And thicker plots by default
 % https://tex.stackexchange.com/a/235439/828
 % https://tex.stackexchange.com/q/262486/828
 \pgfplotsset{
@@ -69,10 +77,6 @@
   every axis plot post/.append style={every mark/.append style={semithick}
   }
 }
-
-% generally thicker lines by default
-% https://tex.stackexchange.com/a/206769/828
-\tikzset{every picture/.style={semithick}}
 
 % Tufte-like plots
 % Based on https://tex.stackexchange.com/a/155210/828
@@ -92,19 +96,10 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{50} % use only every nth frame for the movies
+\newcommand{\everyframe}{55} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
-
-% Easily fill a frame with the whole image.
-% Based on http://tex.stackexchange.com/a/334758/828,
-\newcommand{\fullframeimage}[1]{%
-	\begin{tikzpicture}[remember picture,overlay]%
-		\node[xshift=0,yshift=0] at (current page.center){%
-			\includegraphics[width=\paperwidth]{#1}};%		
-	\end{tikzpicture}%
-}
 
 % Acknowledge images just below them
 % Based on https://tex.stackexchange.com/a/282637
@@ -115,7 +110,7 @@
 % Define us our custom footer
 \defbeamertemplate{footline}{unibe}{%
 	\hspace*{\fill}%
-	v. \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}\xspace|%
+	v. \href{https://github.com/habi/20190605_BrukerUserMeeting/commit/\gitHash}{\gitAbbrevHash}\xspace|\xspace%
 	p.\xspace\insertframenumber/\inserttotalframenumber%
 	\hspace*{4ex}%
 	\vskip2pt%
@@ -139,11 +134,15 @@
 \renewcommand{\bibopenparen}{\addcomma\addspace}
 \renewcommand{\bibcloseparen}{\addcomma\addspace}
 
-
+% Slide transiton
 \addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
 
+% open in fullscreen
+\hypersetup{pdfpagemode=FullScreen}
+
 \begin{document}
-% We want no footline on the title page, http://tex.stackexchange.com/a/18829/828 helps
+% No footline on the title page
+% http://tex.stackexchange.com/a/18829/828 helps us to achieve that
 {%
 	\setbeamertemplate{footline}{}%
 	\begin{frame}%
@@ -156,7 +155,7 @@
 	\begin{itemize}
 		\item<1-> University of Bern, Switzerland
 		\item<1-> Institute of Anatomy
-		\item<1-> Group for topographic and clinical Anatomy
+		\item<1-> Topographic and clinical Anatomy
 		\item<1-> \uct-Team: Ruslan Hlushchuk, David Haberthür, Oleksiy-Zakhar Khoma, Fluri Wieland, Carlos Correa Shokiche
 		\item<1-> Biomedical research
 		\begin{itemize}
@@ -165,13 +164,8 @@
 			\item Lung imaging: Tumor detection and classification
 			\item Physiology: Zebrafish musculature and gills
 		\end{itemize}
-		\item<1-> SkyScan 1172 \& 1272 \visible<2->{\& 2214}
+		\item<1-> SkyScan 1172 \& 1272 \uncover<2->{\& 2214}
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Introduction}
-	\fullframeimage{./img/{{control06.abstract}}}
 \end{frame}
 
 \begin{frame}
@@ -195,7 +189,16 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
+	\frametitle{Introduction}
+	\begin{itemize}
+		\item Zebrafish (\emph{Danio rerio}) as model organism
+		\item Adaptation of respiratory organ to endurance training
+		\item Study \ce{O2} metabolism
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Adaptation to training exercise}
 	\begin{overprint}
 	    	\begin{itemize}
@@ -203,36 +206,27 @@
 			\item Skeletal and heart muscle hypertrophy
 			\item Induction of angiogenesis in muscles
 			\begin{itemize}
-				\item \faMale: \cite{Andersen1977}
-				\item \begin{tikzpicture}
+				\item \textcite{Andersen1977}: \faMale
+				\item \textcite{Baum2018}: \begin{tikzpicture}
 					\def\size{0.618 ex}
 					\filldraw (0,0) circle (\size);
 					\filldraw (\size,\size) circle (0.618*\size);
 					\filldraw (-\size,\size) circle (0.618*\size);
-					\end{tikzpicture}: \cite{Baum2018}
-				\item \faFish: \cite{Sanger1992}
+					\end{tikzpicture}: 
+				\item \textcite{Sanger1992}: \faFish
 			\end{itemize}
 			\item Increase in hemoglobin levels
 			\item<2-> Human lungs? \onslide<3->{Inconclusive results
 			\begin{itemize}
-				\item Athletes better than non-athletes: \cite{Baxter-Jones1996}
-				\item Competitive swimming does not affect lung growth: \cite{Bovard2018}
-%			\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}
-				\item Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners \cite{Sable2012,Armour1993}
-				\item Other indices of lung function similar between swimmers, runners and control \cite{Armour1993}
+				\item \textcite{Baxter-Jones1996}: Athletes better than non-athletes
+				\item \textcite{Bovard2018}: Competitive swimming does not affect lung growth: 
+				\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}.}				
+				\item \textcite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
+				\item \textcite{Armour1993}: Other indices of lung function similar between swimmers, runners and control 
 			\end{itemize}}
 		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
 	\end{overprint}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why?}
-	\begin{itemize}
-		\item Zebrafish (\emph{Danio rerio}) as model organism
-		\item Adaptation of respiratory organ to endurance training
-		\item Study \ce{O2} metabolism
-	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -244,22 +238,49 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Gill anatomy}
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
+			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/fishhead/head-without-gills0}{001}{160}%
+			};%
+	\end{tikzpicture}%
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gill anatomy}
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
+			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/fishhead/head-without-gills0}{161}{481}%
+			};%
+	\end{tikzpicture}%
+\end{frame}
+
+\begin{frame}
 	\frametitle{How?}
-		\begin{columns}
+	\begin{columns}
 	\begin{column}{0.5\linewidth}
 		\begin{itemize}
-			\item<1-> Training according to \textcite{Palstra2010} (Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at $\frac{2}{3}$ of critical speed).
-			\note{Comparable with the training routine of Michael Phelps weekly training routine but the fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults while the Olympic winner for perhaps half of his lifetime and started as child)}
+			\item<1-> Training according to \textcite{Palstra2010}\newline\SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed
+			\note{Comparable with the weekly training routine of Michael Phelps.
+				The fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults.
+				The Olympic winner trained for half of his lifetime and started as child)}
+			\begin{itemize}
+				\item<2-> Endurance
+			\end{itemize}
 			\item<3-> Morphology \& Physiology
 			\begin{itemize}
-				\item<3-> Body length
-				\item<3-> Body weight
-				\item<3-> Respirometry
+				\item<3-> Body size \& weight
+				\item<3-> \ce{O2} consumption
 			\end{itemize}
 			\item<4-> Electron microscopy
-			\item<5-> \uct imaging
-			\item<7-> Delineation
-			\item<8-> Analysis
+			\begin{itemize}
+				\item<4-> Qualitative gill structure
+			\end{itemize}
+			\item<5-> \uct imaging \onslide<6->{and Delineation}
+			\item<7-> Analysis
+			\begin{itemize}
+				\item<7-> Qualitative gill volume, structure and complexity
+			\end{itemize}
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.5\linewidth}
@@ -268,77 +289,105 @@
 			\pgfmathsetlength{\imagescale}{\imagewidth/1080}%
 			\def\x{667}% scalebar-x starting at golden ratio of image width of 1080px = 667
 			\def\y{547}% scalebar-y at 90% of image height of 608px = 547
-			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./mov/fishvideo/{{fishvideo_0033}}}};%
 				% 69px = 30mm > 100px = 44mm > 1142px = 500mm, 228px = 100mm
-				\draw[|-|,blue] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter} (TEMPORARY)};
-				\draw[|-|,white] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};
+				%\draw[|-|,blue] (410,188) -- (478,182) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{30}{\milli\meter} (TEMPORARY)};
+				\draw[|-|,white] (\x,\y) -- (\x+228.4,\y) node [midway,above] {\(\approx\)\SI{10}{\centi\meter}};%
 			\end{tikzpicture}%
-			}
+			}%
 		\only<2>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/fishvideo/README.md
-			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}
-			}
-		\only<4>{%
-			\includegraphics[width=0.5\linewidth]{./img/{{EM.c5.3}}}
-			\source{Control}{}%
-			\includegraphics[width=0.5\linewidth]{./img/{{EM.s5.3}}}%
-			\source{Swimmer}{}%
+			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/fishvideo/fishvideo_0}{001}{250}%
+			}%
+		\only<3>{\centering\Huge\faFish:\xspace\faRuler\xspace\&\xspace\faWeight}
+	\only<4>{%
+			\pgfmathsetlength{\imagewidth}{0.5\linewidth}%
+			\pgfmathsetlength{\imagescale}{\imagewidth/794}%
+			\def\x{491}% scalebar-x starting at golden ratio of image width of 794px = 491
+			\def\y{458}% scalebar-y at 90% of image height of 509px = 458
+			\def\shadow{4}% shadow parameter for scalebar
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{EM.c5.3}}}};%
+				% 794px = 2.4111398mm > 100px = 304um > 165px = 500um, 33px = 100um
+				%\draw[|-|,blue] (0,298) -- (794,298) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{2.4111398}{\milli\meter} (794px) TEMPORARY!};
+				\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+165+\shadow,\y+\shadow) node [midway, above] {\SI{500}{\micro\meter}};%
+				\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
+			\end{tikzpicture}%
+			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{EM.s5.3}}}};%
+				% 794px = 2.4111398mm > 100px = 304um > 165px = 500um, 33px = 100um
+				%\draw[|-|,blue] (0,298) -- (794,298) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{2.4111398}{\milli\meter} (794px) TEMPORARY!};
+				\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+165+\shadow,\y+\shadow) node [midway, above] {\SI{500}{\micro\meter}};%
+				\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
+			\end{tikzpicture}%
 			}
 		\only<5>{%
-			\lstinputlisting[xleftmargin=5ex,
-				linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
+			\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
 			}
-		\includegraphics<6>[width=\linewidth]{./img/Overviews}%
-		\includegraphics<7>[height=0.6\textheight]{./img/CTAn}%
-		\only<8>{%
+		\includegraphics<6>[height=0.6\textheight]{./img/CTAn}%
+		\only<7>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
-			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}
+			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
+			\source{gph.is/2nqkple}{}%
 			}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}
-	\frametitle{What?}
-	\begin{itemize}
-		\item Body size \& weight
-		\item Endurance
-		\item Gill structure
-		\item Gill volume
-		\item Gill complexity
-		\item \ce{O2 consumption}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Body size}
-	\include{./img/Lengths}
+	\only<1>{\faRuler}
+	\only<2>{\include{./img/Lengths}}
+	\only<3>{\include{./img/Lengths_scaled}}
+	\note{Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of \SI{0.5}{\milli\metre}.}
+	\note{\emph{whis}: float, sequence, or string (default = 1.5)
+		As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
+		In other words, where IQR is the interquartile range (Q3-Q1), the upper whisker will extend to last datum less than Q3 + whis*IQR).
+		Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
+		Beyond the whiskers, data are considered outliers and are plotted as individual points.}
 \end{frame}
-
-\note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
-
-\note{whis: float, sequence, or string (default = 1.5)
-	As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
-	In other words, where IQR is the interquartile range (Q3-Q1), the upper whisker will extend to last datum less than Q3 + whis*IQR).
-	Similarly, the lower whisker will extend to the first datum greater than Q1 - whis*IQR.
-	Beyond the whiskers, data are considered outliers and are plotted as individual points.}
 
 \begin{frame}
 	\frametitle{Body weight}
-	\include{./img/Weights}
+	\only<1>{\faWeight}
+	\only<2>{\include{./img/Weights}}
+	\only<3>{\include{./img/Weights_scaled}}
+	\note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
 \end{frame}
-
-\note{Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of 0.5 mm.}
 
 \begin{frame}
 	\frametitle{Endurance}
-	\include{./img/Endurance}
+	\only<1>{Tachometer}
+	\only<2>{\include{./img/Endurance}}
+	\only<3>{\include{./img/Endurance_scaled}}	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Gill structure}
-	\include{./img/Filament_length}
+	\only<1>{%
+		\pgfmathsetlength{\imagewidth}{0.5\linewidth}%
+		\pgfmathsetlength{\imagescale}{\imagewidth/794}%
+		\def\x{491}% scalebar-x starting at golden ratio of image width of 794px = 491
+		\def\y{458}% scalebar-y at 90% of image height of 509px = 458
+		\def\shadow{4}% shadow parameter for scalebar
+		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{EM.c5.3}}}};%
+			% 794px = 2.4111398mm > 100px = 304um > 165px = 500um, 33px = 100um
+			%\draw[|-|,blue] (0,298) -- (794,298) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{2.4111398}{\milli\meter} (794px) TEMPORARY!};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+165+\shadow,\y+\shadow) node [midway, above] {\SI{500}{\micro\meter}};%
+			\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
+		\end{tikzpicture}%
+		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]%
+			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{EM.s5.3}}}};%
+			% 794px = 2.4111398mm > 100px = 304um > 165px = 500um, 33px = 100um
+			%\draw[|-|,blue] (0,298) -- (794,298) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{2.4111398}{\milli\meter} (794px) TEMPORARY!};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+165+\shadow,\y+\shadow) node [midway, above] {\SI{500}{\micro\meter}};%
+			\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
+		\end{tikzpicture}%	
+		}
+	\only<2>{\include{./img/Filament_length}}
+	\only<3>{\include{./img/Filament_length_scaled}}	
 \end{frame}
 
 \begin{frame}
@@ -346,17 +395,21 @@
 	\only<1>{%
 		\pgfmathsetlength{\imagewidth}{0.4\linewidth}%
 		\pgfmathsetlength{\imagescale}{\imagewidth/2524}%
-		\def\x{2019}% scalebar-x starting at golden ratio of image width of 2524px = 1560
+		\def\x{1560}% scalebar-x starting at golden ratio of image width of 2524px = 1560
 		\def\y{2272}% scalebar-y at 90% of image height of 2524px = 2272
 		\def\shadow{4}% shadow parameter for scalebar		
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_rec00001865}}}};
 			% 2524px = 4.1874422mm > 100px = 166um > 301px = 500um, 60px = 100um
-			\draw[|-|,blue] (0,1262) -- (2524,1262) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{4.18}{\milli\meter} (2524px) TEMPORARY!};
+			%\draw[|-|,blue] (0,1262) -- (2524,1262) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{4.18}{\milli\meter} (2524px) TEMPORARY!};
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 	}%
+	\note{We analyzed 20 samples with a mean size of a cube with a side length of 1863 pixels.
+		This means we analyzed 129.40 GigaPixels.
+		This means we analyzed 129395.29 MegaPixels.
+		In total 46014 slices.}
 	\pgfmathsetlength{\imagewidth}{0.618\linewidth}%
 	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
 	\def\x{1730}% scalebar-x starting at golden ratio of image width of 2163px = 1337
@@ -385,15 +438,7 @@
 		\end{tikzpicture}%
 		}%
 	\only<5>{\include{./img/Gillvolume}}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Gill complexity}
-	\begin{tikzpicture}[remember picture,overlay]%
-		\node[xshift=0,yshift=-0.085\paperheight-0.016\paperheight/2] at (current page.center){%
-			\animategraphics[palindrome,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{025}{256}%
-			};%
-	\end{tikzpicture}%
+	\only<6>{\include{./img/Gillvolume_scaled}}
 \end{frame}
 
 \begin{frame}
@@ -423,52 +468,57 @@
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
-		}%		
-	\only<4>{\include{./img/Gills_per_organ}}
+		}%	
+	\only<4>{%
+		\begin{tikzpicture}[remember picture,overlay]%
+			\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
+				\animategraphics[palindrome,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{025}{256}%
+				};%
+		\end{tikzpicture}%
+		}%
+	\only<5>{\include{./img/Gills_per_organ}}
+	\only<6>{\include{./img/Gills_per_organ_scaled}}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\ce{O2} consumption}
-	\include{./img/O2_normalized}
-	\note{Increase in normalized o2 consumption relatively to control (because otherwise not significant change)}
+	\only<1>{\include{./img/O2_normalized}}
+	\only<2>{\include{./img/O2_normalized_scaled}}
+	\note{Increase in normalized \cd{O2} consumption relatively to control (because otherwise not significant change)}
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{Wee!}
+	\frametitle{Done!}
 	\begin{itemize}
-		\item The zebrafish respiratory organ has a high plasticity
-		\item After endurance training respiratory organ is larger and more airy, facilitating \ce{O2} uptake.
 		\item Increase in critical speed, body weight and body length
-		\item Increase in oxygen consumption of trained zebrafish
-		\item Morphological differences in gills
-		\item Longer primary filaments and more secondary filaments
-		\item Increase of total gill volume
+		\item Morphological differences in gills: Longer primary filaments and more secondary filaments
+		\item Increase of gill volume
+		\item Decrease of gill complexity, more room between filaments
+		\item Increase in oxygen consumption
 		\pause
-		\item \emph{Adaptation of the respiratory organ of zebrafish to endurance training shown for the first time!}
+		\item \emph{Adaptation of the zebrafish respiratory organ to endurance training is shown for the first time!}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Thanks!}
 	\begin{columns}
 		\begin{column}{0.618\linewidth}
 		\begin{itemize}
-			\item<1-> Team from the \emph{Topographic and clinical Anatomy} group
+			\item Topographic and clinical Anatomy
 			\begin{itemize}
-				\item<1-> Dea Aaldijk, Matthias Messerli
-				\item<1-> Ruslan Hlushchuk, Valentin Djonov
-				\item<1-> Fluri Wieland, Oleksiy-Zakhar Khoma
-				\item<1-> Sarya Fark, Helena Röss
+				\item Dea Aaldijk, Matthias Messerli
+				\item Valentin Djonov, Ruslan Hlushchuk
+				\item Fluri Wieland, Oleksiy-Zakhar Khoma
+				\item Sarya Fark, Helena Röss
 			\end{itemize}
-			\item<1-> Other important people at the Institute of Anatomy
+			\item Fish facility people
 			\begin{itemize}
-				\item<1-> Werner Graber, Jeannine Wagner-Zimmermann and Beat Haenni
 				\item<1-> Regula Buergy, Eveline Yao and Sara Soltermann
-				\item<1-> Marcos Sande, Carolina Garcia
 				\item<1-> Ines Marquez, Xavier Langa and Alexander Uwe Ernst
 			\end{itemize}
-			\item<1-> SNF
+			\item SNF
 			\item<2-> You, for listening
 			\item<3-> Questions?
 		\end{itemize}
