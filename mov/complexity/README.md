@@ -1,4 +1,4 @@
-The single frames were generated with CTVox, the key-frames are [here](control03_thresholded_.sb)
+The single frames were generated with [CTVox](https://www.bruker.com/products/microtomography/micro-ct-for-sample-scanning/realistic-visualization-by-volume-rendering.html), the key-frames are [here](control03_thresholded_.sb)
 
 I removed the coordinate arrows (bottom left) and the Bruker logo (top right) with [Fiji](https://fiji.sc) and saved out the single frames again as PNG images.
 
