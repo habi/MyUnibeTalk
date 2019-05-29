@@ -8,4 +8,4 @@ With ImageMagick I made the (white) background of the single frames transparent 
 mogrify -format png -fuzz 5% -transparent "#FFFFFF" -resize 1280 -shave 0x80 *.png
 ```
 
-Afterwards I ran all the images through [ImageOptim](https://imageoptim.com/mac) to minimize their file size.
+Afterwards I ran all the images through [TinyPNG](https://tinypng.com/) to minimize their file size.
