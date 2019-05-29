@@ -96,7 +96,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{55} % use only every nth frame for the movies
+\newcommand{\everyframe}{1} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -135,7 +135,7 @@
 \renewcommand{\bibcloseparen}{\addcomma\addspace}
 
 % Slide transiton
-\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
+%\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
 
 % open in fullscreen
 \hypersetup{pdfpagemode=FullScreen}
@@ -338,8 +338,8 @@
 \begin{frame}[label=current]
 	\frametitle{Body size}
 	\only<1>{\faRuler}
-	\only<2>{\include{./img/Lengths}}
-	\only<3>{\include{./img/Lengths_scaled}}
+	\only<2>{\include{./plots/Lengths}}
+	\only<3>{\include{./plots/Lengths_scaled}}
 	\note{Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of \SI{0.5}{\milli\metre}.}
 	\note{\emph{whis}: float, sequence, or string (default = 1.5)
 		As a float, determines the reach of the whiskers to the beyond the first and third quartiles.
@@ -351,16 +351,16 @@
 \begin{frame}
 	\frametitle{Body weight}
 	\only<1>{\faWeight}
-	\only<2>{\include{./img/Weights}}
-	\only<3>{\include{./img/Weights_scaled}}
+	\only<2>{\include{./plots/Weights}}
+	\only<3>{\include{./plots/Weights_scaled}}
 	\note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Endurance}
 	\only<1>{Tachometer}
-	\only<2>{\include{./img/Endurance}}
-	\only<3>{\include{./img/Endurance_scaled}}	
+	\only<2>{\include{./plots/Endurance}}
+	\only<3>{\include{./plots/Endurance_scaled}}	
 \end{frame}
 
 \begin{frame}
@@ -386,8 +386,8 @@
 			\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
 		\end{tikzpicture}%	
 		}
-	\only<2>{\include{./img/Filament_length}}
-	\only<3>{\include{./img/Filament_length_scaled}}	
+	\only<2>{\include{./plots/Filament_length}}
+	\only<3>{\include{./plots/Filament_length_scaled}}	
 \end{frame}
 
 \begin{frame}
@@ -437,8 +437,8 @@
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%
-	\only<5>{\include{./img/Gillvolume}}
-	\only<6>{\include{./img/Gillvolume_scaled}}
+	\only<5>{\include{./plots/Gillvolume}}
+	\only<6>{\include{./plots/Gillvolume_scaled}}
 \end{frame}
 
 \begin{frame}
@@ -476,14 +476,14 @@
 				};%
 		\end{tikzpicture}%
 		}%
-	\only<5>{\include{./img/Gills_per_organ}}
-	\only<6>{\include{./img/Gills_per_organ_scaled}}
+	\only<5>{\include{./plots/Gills_per_organ}}
+	\only<6>{\include{./plots/Gills_per_organ_scaled}}
 \end{frame}
 
 \begin{frame}
 	\frametitle{\ce{O2} consumption}
-	\only<1>{\include{./img/O2_normalized}}
-	\only<2>{\include{./img/O2_normalized_scaled}}
+	\only<1>{\include{./plots/O2_normalized}}
+	\only<2>{\include{./plots/O2_normalized_scaled}}
 	\note{Increase in normalized \cd{O2} consumption relatively to control (because otherwise not significant change)}
 \end{frame}
 
