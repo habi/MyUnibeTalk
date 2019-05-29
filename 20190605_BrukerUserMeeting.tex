@@ -78,19 +78,21 @@
   }
 }
 
-% Tufte-like plots
+% stripped-down plot styling
 % Based on https://tex.stackexchange.com/a/155210/828
 % And then start each plot with `\begin{axis}[tuftelike,'
 \pgfkeys{%
-	/pgfplots/tuftelike/.style={%
-		tick style={major tick length=4pt},
-		separate axis lines,
-		axis x line*=bottom,
-		axis x line shift=5pt,
-		xlabel shift=5pt,
-		axis y line*=left,
-		axis y line shift=5pt,
-		ylabel shift=5pt
+	/pgfplots/simplified/.style={%
+		tick style={major tick length=0pt},
+%		separate axis lines,
+%		axis x line*=bottom,
+%		axis x line shift=10pt,
+%		xlabel shift=1pt,
+%		axis y line*=left,
+%		axis y line shift=10pt,
+		ymajorgrids=true,
+		axis line style={draw=none},
+%		ylabel shift=1pt
 		}
 	}
 
@@ -140,6 +142,10 @@
 % open in fullscreen
 \hypersetup{pdfpagemode=FullScreen}
 
+% Move the text down a bit
+% THIS IS A BIG HACK, IT SHOULD BE FIXED IN THE TEMPLATE
+\addtobeamertemplate{frametitle}{}{\vspace*{1.5ex}}
+
 \begin{document}
 % No footline on the title page
 % http://tex.stackexchange.com/a/18829/828 helps us to achieve that
@@ -149,6 +155,17 @@
 		\maketitle
 	\end{frame}%
 }
+
+% Alignment frame to test the ugly text-block-movement hack above
+%\begin{frame}
+%	\frametitle{Alignment frame}
+%	\begin{tikzpicture}
+%		\def\cut{3}
+%		\draw [|-|,ultra thick] (0,\cut) -- (0,\textheight-\cut);
+%		\draw [|-|,ultra thick] (0.5\textwidth,\cut) -- (0.5\textwidth,\textheight-\cut);	
+%		\draw [|-|,ultra thick] (\textwidth,\cut) -- (\textwidth,\textheight-\cut);
+%	\end{tikzpicture}
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Hello!}
@@ -206,23 +223,23 @@
 			\item Skeletal and heart muscle hypertrophy
 			\item Induction of angiogenesis in muscles
 			\begin{itemize}
-				\item \textcite{Andersen1977}: \faMale
-				\item \textcite{Baum2018}: \begin{tikzpicture}
+				\item \cite{Andersen1977}: \faMale
+				\item \cite{Baum2018}: \begin{tikzpicture}
 					\def\size{0.618 ex}
 					\filldraw (0,0) circle (\size);
 					\filldraw (\size,\size) circle (0.618*\size);
 					\filldraw (-\size,\size) circle (0.618*\size);
-					\end{tikzpicture}: 
-				\item \textcite{Sanger1992}: \faFish
+					\end{tikzpicture}
+				\item \cite{Sanger1992}: \faFish
 			\end{itemize}
 			\item Increase in hemoglobin levels
 			\item<2-> Human lungs? \onslide<3->{Inconclusive results
 			\begin{itemize}
-				\item \textcite{Baxter-Jones1996}: Athletes better than non-athletes
-				\item \textcite{Bovard2018}: Competitive swimming does not affect lung growth: 
+				\item \cite{Baxter-Jones1996}: Athletes better than non-athletes
+				\item \cite{Bovard2018}: Competitive swimming does not affect lung growth
 				\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}.}				
-				\item \textcite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
-				\item \textcite{Armour1993}: Other indices of lung function similar between swimmers, runners and control 
+				\item \cite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
+				\item \cite{Armour1993}: Other indices of lung function similar between swimmers, runners and control
 			\end{itemize}}
 		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
@@ -260,7 +277,7 @@
 	\begin{columns}
 	\begin{column}{0.5\linewidth}
 		\begin{itemize}
-			\item<1-> Training according to \textcite{Palstra2010}\newline\SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed
+			\item<1-> Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed~\cite{Palstra2010}
 			\note{Comparable with the weekly training routine of Michael Phelps.
 				The fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults.
 				The Olympic winner trained for half of his lifetime and started as child)}
@@ -335,9 +352,10 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Body size}
-	\only<1>{\faRuler}
+	\centering
+	\only<1>{\Huge\faRuler}
 	\only<2>{\include{./plots/Lengths}}
 	\only<3>{\include{./plots/Lengths_scaled}}
 	\note{Length of the fish was measured after anesthesia with procaine from the head to the tail fin (excluding the fin) with a precision of \SI{0.5}{\milli\metre}.}
@@ -350,7 +368,8 @@
 
 \begin{frame}
 	\frametitle{Body weight}
-	\only<1>{\faWeight}
+	\centering
+	\only<1>{\Huge\faWeight}
 	\only<2>{\include{./plots/Weights}}
 	\only<3>{\include{./plots/Weights_scaled}}
 	\note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
@@ -358,13 +377,15 @@
 
 \begin{frame}
 	\frametitle{Endurance}
-	\only<1>{Tachometer}
+	\centering
+	\only<1>{\Huge\faTachometer*}
 	\only<2>{\include{./plots/Endurance}}
 	\only<3>{\include{./plots/Endurance_scaled}}	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Gill structure}
+	\centering
 	\only<1>{%
 		\pgfmathsetlength{\imagewidth}{0.5\linewidth}%
 		\pgfmathsetlength{\imagescale}{\imagewidth/794}%
@@ -392,6 +413,7 @@
 
 \begin{frame}
 	\frametitle{Gill volume}
+	\centering
 	\only<1>{%
 		\pgfmathsetlength{\imagewidth}{0.4\linewidth}%
 		\pgfmathsetlength{\imagescale}{\imagewidth/2524}%
@@ -443,6 +465,7 @@
 
 \begin{frame}
 	\frametitle{Gill complexity}
+	\centering
 	\pgfmathsetlength{\imagewidth}{0.618\linewidth}%
 	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
 	\def\x{1730}% scalebar-x starting at golden ratio of image width of 2163px = 1337
@@ -486,7 +509,6 @@
 	\only<2>{\include{./plots/O2_normalized_scaled}}
 	\note{Increase in normalized \cd{O2} consumption relatively to control (because otherwise not significant change)}
 \end{frame}
-
 
 \begin{frame}
 	\frametitle{Done!}
