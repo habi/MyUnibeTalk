@@ -15,7 +15,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-\includeonlyframes{current}
+%\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -72,10 +72,9 @@
 % https://tex.stackexchange.com/a/235439/828
 % https://tex.stackexchange.com/q/262486/828
 \pgfplotsset{
-  every axis plot/.append style={semithick},
-  every axis/.append style={semithick}
-  every axis plot post/.append style={every mark/.append style={semithick}
-  }
+	every axis plot/.append style={semithick},
+	every axis/.append style={semithick}
+	every axis plot post/.append style={every mark/.append style={semithick}}
 }
 
 % stripped-down plot styling
@@ -98,7 +97,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{15} % use only every nth frame for the movies
+\newcommand{\everyframe}{55} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -140,7 +139,7 @@
 %\addtobeamertemplate{background canvas}{\transfade[duration=0.5]}{}
 
 % open in fullscreen
-\hypersetup{pdfpagemode=FullScreen}
+%\hypersetup{pdfpagemode=FullScreen}
 
 % Move the text down a bit
 % THIS IS A BIG HACK, IT SHOULD BE FIXED IN THE TEMPLATE
@@ -254,11 +253,11 @@
 	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
 
-\begin{frame}[label=current]
+\begin{frame}
 	\frametitle{Gill anatomy}
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
-			\animategraphics[autoplay,width=\paperwidth,every=2]{12}{./mov/fishhead/head-without-gills0}{001}{160}%
+			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{24}{./mov/fishhead/head-without-gills0}{001}{160}%
 			};%
 	\end{tikzpicture}%
 \end{frame}
@@ -267,7 +266,7 @@
 	\frametitle{Gill anatomy}
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
-			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/fishhead/head-without-gills0}{161}{481}%
+			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{24}{./mov/fishhead/head-without-gills0}{161}{481}%
 			};%
 	\end{tikzpicture}%
 \end{frame}
@@ -342,7 +341,7 @@
 		\only<5>{%
 			\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
 			}
-		\includegraphics<6>[height=0.6\textheight]{./img/CTAn}%
+		\includegraphics<6>[height=0.618\textheight]{./img/CTAn}%
 		\only<7>{%
 			% If you don't have the frames for the video, you can generate them as specified in ./mov/coder/README.md
 			\animategraphics[loop,autoplay,width=\linewidth,every=\everyframe]{25}{./mov/coder/coder-}{0}{133}%
@@ -488,7 +487,7 @@
 	\only<3>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_area_organ_1500.crop.combination}}}};
-			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
+			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
 		}%
@@ -567,22 +566,23 @@
 	\end{itemize}
 \end{frame}
 
-%\begin{frame}[label=current]
-%	\frametitle{Resolution/Pixel size}
-%	\includegraphics<1>[width\textwidth]{./img/lineprofile}
-%	\only<2>{
-%		\begin{tikzpicture}
-%			\begin{axis}[
-%				simplified,
-%				scale only axis,
-%				width=0.75\textwidth,
-%				height=.618\textheight,
-%				xlabel={Pixels},
-%				ylabel={Gray value}]
-%				\addplot [ubRed,mark=*] table [col sep=comma] {./plots/LineProfile.csv};
-%			\end{axis}
-%		\end{tikzpicture}
-%		}
-%\end{frame}
+\begin{frame}[label=current]
+	\frametitle{Resolution/Pixel size}
+	\centering
+	\includegraphics<1>[height=.618\textheight]{./img/LineProfile}
+	\only<2>{
+		\begin{tikzpicture}
+			\begin{axis}[
+				simplified,
+				scale only axis,
+				width=0.75\textwidth,
+				height=.618\textheight,
+				xlabel={Pixels},
+				ylabel={Gray value}]
+				\addplot [ubRed,mark=o] table [col sep=comma] {./plots/LineProfile.csv};
+			\end{axis}
+		\end{tikzpicture}
+		}
+\end{frame}
 
 \end{document}
