@@ -15,7 +15,7 @@
 \institute{Institute of Anatomy\\University of Bern\\Switzerland}
 \date{June 5, 2019 | \href{https://www.bruker.com/events/micro-ct-users-meeting.html}{Bruker micro-CT Users Meeting 2019}}
 
-%\includeonlyframes{current}
+\includeonlyframes{current}
 %then....
 %\begin{frame}[label=current]
 %\end{frame}
@@ -98,7 +98,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{1} % use only every nth frame for the movies
+\newcommand{\everyframe}{15} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -162,7 +162,7 @@
 %	\begin{tikzpicture}
 %		\def\cut{3}
 %		\draw [|-|,ultra thick] (0,\cut) -- (0,\textheight-\cut);
-%		\draw [|-|,ultra thick] (0.5\textwidth,\cut) -- (0.5\textwidth,\textheight-\cut);	
+%		\draw [|-|,ultra thick] (0.5\textwidth,\cut) -- (0.5\textwidth,\textheight-\cut);
 %		\draw [|-|,ultra thick] (\textwidth,\cut) -- (\textwidth,\textheight-\cut);
 %	\end{tikzpicture}
 %\end{frame}
@@ -218,7 +218,7 @@
 \begin{frame}
 	\frametitle{Adaptation to training exercise}
 	\begin{overprint}
-	    	\begin{itemize}
+		\begin{itemize}
 			\item Increased body length and weight
 			\item Skeletal and heart muscle hypertrophy
 			\item Induction of angiogenesis in muscles
@@ -237,7 +237,7 @@
 			\begin{itemize}
 				\item \cite{Baxter-Jones1996}: Athletes better than non-athletes
 				\item \cite{Bovard2018}: Competitive swimming does not affect lung growth
-				\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}.}				
+				\note{Helena adds: \quote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training saison, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}}.}
 				\item \cite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
 				\item \cite{Armour1993}: Other indices of lung function similar between swimmers, runners and control
 			\end{itemize}}
@@ -254,11 +254,11 @@
 	\source{Campbell Biology}{\cite{Taylor2017}}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[label=current]
 	\frametitle{Gill anatomy}
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
-			\animategraphics[autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/fishhead/head-without-gills0}{001}{160}%
+			\animategraphics[autoplay,width=\paperwidth,every=2]{12}{./mov/fishhead/head-without-gills0}{001}{160}%
 			};%
 	\end{tikzpicture}%
 \end{frame}
@@ -380,7 +380,7 @@
 	\centering
 	\only<1>{\Huge\faTachometer*}
 	\only<2>{\include{./plots/Endurance}}
-	\only<3>{\include{./plots/Endurance_scaled}}	
+	\only<3>{\include{./plots/Endurance_scaled}}
 \end{frame}
 
 \begin{frame}
@@ -405,10 +405,10 @@
 			%\draw[|-|,blue] (0,298) -- (794,298) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{2.4111398}{\milli\meter} (794px) TEMPORARY!};
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+165+\shadow,\y+\shadow) node [midway, above] {\SI{500}{\micro\meter}};%
 			\draw[|-|,white] (\x,\y) -- (\x+165,\y) node [midway,above] {\SI{500}{\micro\meter}};%
-		\end{tikzpicture}%	
+		\end{tikzpicture}%
 		}
 	\only<2>{\include{./plots/Filament_length}}
-	\only<3>{\include{./plots/Filament_length_scaled}}	
+	\only<3>{\include{./plots/Filament_length_scaled}}
 \end{frame}
 
 \begin{frame}
@@ -419,7 +419,7 @@
 		\pgfmathsetlength{\imagescale}{\imagewidth/2524}%
 		\def\x{1560}% scalebar-x starting at golden ratio of image width of 2524px = 1560
 		\def\y{2272}% scalebar-y at 90% of image height of 2524px = 2272
-		\def\shadow{4}% shadow parameter for scalebar		
+		\def\shadow{4}% shadow parameter for scalebar
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_rec00001865}}}};
 			% 2524px = 4.1874422mm > 100px = 166um > 301px = 500um, 60px = 100um
@@ -470,28 +470,28 @@
 	\pgfmathsetlength{\imagescale}{\imagewidth/2163}%
 	\def\x{1730}% scalebar-x starting at golden ratio of image width of 2163px = 1337
 	\def\y{1191}% scalebar-y at 90% of image height of 1323px = 1191
-	\def\shadow{4}% shadow parameter for scalebar	
+	\def\shadow{4}% shadow parameter for scalebar
 	\only<1>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_thresholded_1500.crop}}}};
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
-		}%		
+		}%
 	\only<2>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_area_organ_1500.crop.edit}}}};
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node [midway,above] {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
-		}%		
+		}%
 	\only<3>{%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/{{Control03_area_organ_1500.crop.combination}}}};
 			\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+301+\shadow,\y+\shadow) node {\SI{500}{\micro\meter}};
 			\draw[|-|,white] (\x,\y) -- (\x+301,\y) node [midway,above] {\SI{500}{\micro\meter}};
 		\end{tikzpicture}%
-		}%	
+		}%
 	\only<4>{%
 		\begin{tikzpicture}[remember picture,overlay]%
 			\node[xshift=0,yshift=-0.0625\paperheight-0.016\paperheight/2] at (current page.center){%
@@ -530,8 +530,8 @@
 		\begin{itemize}
 			\item Topographic and clinical Anatomy
 			\begin{itemize}
-				\item Dea Aaldijk, Matthias Messerli
 				\item Valentin Djonov, Ruslan Hlushchuk
+				\item Dea Aaldijk, Matthias Messerli
 				\item Fluri Wieland, Oleksiy-Zakhar Khoma
 				\item Sarya Fark, Helena Röss
 			\end{itemize}
@@ -541,12 +541,12 @@
 				\item<1-> Ines Marquez, Xavier Langa and Alexander Uwe Ernst
 			\end{itemize}
 			\item SNF
-			\item<2-> You, for listening
+			\item<2-> You, for listening!
 			\item<3-> Questions?
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.382\linewidth}
-			\includegraphics<1->[width=\imsize]{./img/team}
+			\includegraphics<1->[height=.75\textheight]{./img/team}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -566,5 +566,23 @@
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
 \end{frame}
+
+%\begin{frame}[label=current]
+%	\frametitle{Resolution/Pixel size}
+%	\includegraphics<1>[width\textwidth]{./img/lineprofile}
+%	\only<2>{
+%		\begin{tikzpicture}
+%			\begin{axis}[
+%				simplified,
+%				scale only axis,
+%				width=0.75\textwidth,
+%				height=.618\textheight,
+%				xlabel={Pixels},
+%				ylabel={Gray value}]
+%				\addplot [ubRed,mark=*] table [col sep=comma] {./plots/LineProfile.csv};
+%			\end{axis}
+%		\end{tikzpicture}
+%		}
+%\end{frame}
 
 \end{document}
