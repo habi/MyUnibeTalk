@@ -6,10 +6,11 @@
 %\definecolor{color0}{rgb}{0.83921568627451,0,0.168627450980392}
 
 \begin{axis}[
-tuftelike,
+simplified,
 scale only axis,
-width=0.618\textwidth,
-height=0.618\textheight,
+scaled y ticks = false,
+width=0.75\textwidth,
+height=.618\textheight,
 %axis line style={white!80.0!black},
 %legend cell align={left},
 %legend style={draw=white!80.0!black},
@@ -24,7 +25,8 @@ xticklabels={Before Training,After Training},
 ylabel={Normalized \(\displaystyle O_{2}\) consumption},
 %ymajorgrids,
 %ymajorticks=false,
-ymin=0, %ymax=0.0596151429433558,
+%ymin=0,
+ymax=0.061,
 %ytick style={color=white!15.0!black}
 ]
 \path [draw=black, fill=lightgray]
