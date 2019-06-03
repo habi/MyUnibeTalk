@@ -96,7 +96,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{100} % use only every nth frame for the movies
+\newcommand{\everyframe}{1} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -338,7 +338,7 @@
 			\def\y{673}% scalebar-y at 90% of image height of 748px = 673
 			\def\shadow{4}% shadow parameter for scalebar
 			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imsize]{/home/habi/P/Talks/20190605_BrukerUserMeeting/img/{{IMG_20190603_174659}}}};
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imsize]{./img/{{IMG_20190603_174659}}}};
 				% 294px = 12.5mm > 100px = 4250um > 118px = 5mm
 				%\draw[|-|,blue,thick] (494,218) -- (624,481) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{12.5}{\milli\meter} (294px) TEMPORARY!};
 				\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+118+\shadow,\y+\shadow) node [midway, above] {\SI{5}{\milli\meter}};
@@ -566,15 +566,13 @@
 			\includegraphics<1->[height=.618\textheight]{./img/team}
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Thanks!}
+	\only<4>{%
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node at (current page.center){%
 			\animategraphics[palindrome,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{025}{256}%
 			};%
 	\end{tikzpicture}%
+	}
 \end{frame}
 
 \begin{frame}
