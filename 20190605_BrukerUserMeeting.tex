@@ -97,7 +97,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{100} % use only every nth frame for the movies
+\newcommand{\everyframe}{1} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -230,14 +230,14 @@
 					\end{tikzpicture}
 				\item \cite{Sanger1992}: \faFish
 			\end{itemize}
-			\item<2-> Humans? \onslide<3->{Inconclusive results
+			\item<2-> Human lungs? \onslide<3->{Inconclusive results
 			\begin{itemize}
 				\item \cite{Baxter-Jones1996}: Athletes \enquote{better} than non-athletes
 				\item \cite{Bovard2018}: Competitive swimming does not affect lung growth
 				\item \cite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
 				\item \cite{Armour1993}: Other indices of lung function similar between swimmers, runners and control
 			\end{itemize}}
-		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
+		\item<4-> Zebrafish gills? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
 	\end{overprint}
 \end{frame}
@@ -277,7 +277,7 @@
 		\begin{itemize}
 			\item<1-> Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed~\cite{Palstra2010}
 			\begin{itemize}
-				\item<2-> Endurance
+				\item<1-> Endurance
 			\end{itemize}
 			\item<3-> Morphology \& Physiology
 			\begin{itemize}
@@ -286,9 +286,9 @@
 			\end{itemize}			
 			\item<4-> Scanning electron microscopy
 			\begin{itemize}
-				\item<4-> Qualitative gill structure
+				\item<4-> Gill structure
 			\end{itemize}
-			\item<5-> Critical point drying\onslide<6->{, \uct imaging}\onslide<7->{, delineation in CTAn}\onslide<8->{and analysis}
+			\item<5-> Critical point drying\onslide<6->{, \uct imaging}\onslide<7->{, delineation in CTAn}\onslide<8->{ and analysis}
 			\begin{itemize}
 				\item<8-> Gill volume, structure and complexity
 			\end{itemize}
@@ -523,6 +523,7 @@
 
 \begin{frame}
 	\frametitle{\ce{O2} consumption}
+	\centering
 %	\only<1>{%
 	\include{./plots/O2_normalized}
 	%}
@@ -539,6 +540,7 @@
 		\item Decrease of gill complexity, more room between filaments
 		\item Increase in oxygen consumption
 		\pause
+		\item[]
 		\item \emph{Adaptation of the zebrafish respiratory organ to endurance training is shown for the first time!}
 	\end{itemize}
 \end{frame}
@@ -588,7 +590,7 @@
 \begin{frame}
 	\frametitle{Colophon}
 	\begin{itemize}
-			\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub.}
+		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub}
 		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
@@ -602,7 +604,7 @@
 		\pgfmathsetlength{\imagescale}{\imagewidth/1487}%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/LineProfile}};
-			\draw[-,ubRed,ultra thick] (295,537) -- (532,522);
+			\draw[-,ubRed,ultra thick] (403,645) -- (800,635);
 		\end{tikzpicture}%
 		}%
 	\only<2>{%
