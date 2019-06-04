@@ -20,11 +20,12 @@ height=.618\textheight,
 xtick={0,1},
 xticklabels={Control,Swimmer},
 %y grid style={white!80.0!black},
-ylabel={Gills per organ},
+ylabel={Gills per organ [\si{\percent}]},
 %ymajorgrids,
 %ymajorticks=false,
 %ymin=0,
 ymax=0.45,
+yticklabel={\pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}}, % percentage instead of value: https://tex.stackexchange.com/a/87431/828
 %ytick style={color=white!15.0!black},
 %ytick={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4},
 %yticklabels={0.00,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40}
