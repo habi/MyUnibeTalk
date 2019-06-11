@@ -53,6 +53,7 @@
 		basicstyle=\tiny\ttfamily
 		}
 \usepackage{fontawesome5}
+\usepackage{csquotes}
 
 % change tikz font to slide font
 % https://tex.stackexchange.com/a/33329/828
@@ -96,7 +97,7 @@
 
 % Some often used abbreviations
 \newcommand{\imsize}{\linewidth} % set global image width
-\newcommand{\everyframe}{100} % use only every nth frame for the movies
+\newcommand{\everyframe}{1} % use only every nth frame for the movies
 \newlength\imagewidth % needed for scalebars
 \newlength\imagescale % needed for scalebars
 \newcommand{\uct}{\si{\micro}CT\xspace} % make our life easier
@@ -190,6 +191,7 @@
 				\item<1-> Insects: Spiracles \& Trachea
 				\item<2-> Bony fishes: Gills
 				\item<3-> Mammals: Lungs
+				\item<4->[]
 				\item<4-> Zebrafish (\emph{Danio rerio})
 			\end{itemize}
 		\end{column}
@@ -205,10 +207,10 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-\note{To summarize, the different parts of the pathway of oxygen  show similar training induced adaptation mechanisms in diverse vertebrates including humans, but  no data about the morphological response of the respiratory organ to training have  been published yet.
-	For  this pilot study, zebrafish were chosen as a well-established model in  exercise physiology and in respect to the '3R principle' of animal experimentation.
+\note{Breathing in insects is just a series of tubes (https://knowyourmeme.com/memes/series-of-tubes)}
+\note{For this pilot study, zebrafish were chosen as a well-established model in exercise physiology and in respect to the '3R principle' of animal experimentation.
 	As gas exchange and transfer in fish is less efficient than in vertebrates, oxygen uptake might be a bottle-neck in the pathway of oxygen.
-	Additionally,  the anatomy of the gills allows further growth within the  opercular chamber, whereas  the plasticity of adult human lung might be limited  due to the rigidness of the chest restricting its expansion.
+	Additionally, the anatomy of the gills allows further growth within the opercular chamber, whereas the plasticity of adult human lung might be limited due to the rigidness of the chest restricting its expansion.
 	Our working hypothesis was that exercise would increase oxygen consumption and improve oxygen uptake via gill enlargement.}
 
 \begin{frame}
@@ -230,16 +232,17 @@
 			\end{itemize}
 			\item<2-> Human lungs? \onslide<3->{Inconclusive results
 			\begin{itemize}
-				\item \cite{Baxter-Jones1996}: Athletes better than non-athletes
+				\item \cite{Baxter-Jones1996}: Athletes \enquote{better} than non-athletes
 				\item \cite{Bovard2018}: Competitive swimming does not affect lung growth
 				\item \cite{Sable2012,Armour1993}: Forced expiratory volume and maximum voluntary ventilation higher in swimmers than runners
 				\item \cite{Armour1993}: Other indices of lung function similar between swimmers, runners and control
 			\end{itemize}}
-		\item<4-> Zebrafish? \onslide<5->{Unknown results\ldots}
+		\item<4-> Zebrafish gills? \onslide<5->{Unknown results\ldots}
 	\end{itemize}
 	\end{overprint}
 \end{frame}
-\note{Helena adds: If the lung function of competitive swimmers (n=10) don't further increase before and after one training season, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}.}
+\note{Helena adds: \enquote{If the lung function of competitive swimmers (n=10) don't further increase before and after one training season, can we really conclude that the swimmers lung don't adapt? Although there is no solid evidence that adult lung may grow after swimming exercise, IMO there is also not sufficient evidence against: all tests measured lung \emph{function}, not its \emph{morphology}.}}
+\note{To summarize, the different parts of the pathway of oxygen show similar training induced adaptation mechanisms in diverse vertebrates including humans, but no data about the morphological response of the respiratory organ to training have been published yet.}
 
 \begin{frame}
 	\frametitle{Gill anatomy}
@@ -274,7 +277,7 @@
 		\begin{itemize}
 			\item<1-> Training for \SI{5}{w}, \SI{5}{\day\per w}, \SI{6}{\hour\per\day}, at \SI{66}{\percent} of critical speed~\cite{Palstra2010}
 			\begin{itemize}
-				\item<2-> Endurance
+				\item<1-> Endurance
 			\end{itemize}
 			\item<3-> Morphology \& Physiology
 			\begin{itemize}
@@ -283,9 +286,9 @@
 			\end{itemize}			
 			\item<4-> Scanning electron microscopy
 			\begin{itemize}
-				\item<4-> Qualitative gill structure
+				\item<4-> Gill structure
 			\end{itemize}
-			\item<5-> Critical point drying\onslide<6->{, \uct imaging}\onslide<7->{, delineation in CTAn}\onslide<8->{, Qualitative analysis}
+			\item<5-> Critical point drying\onslide<6->{, \uct imaging}\onslide<7->{, delineation in CTAn}\onslide<8->{ and analysis}
 			\begin{itemize}
 				\item<8-> Gill volume, structure and complexity
 			\end{itemize}
@@ -338,7 +341,7 @@
 			\def\y{673}% scalebar-y at 90% of image height of 748px = 673
 			\def\shadow{4}% shadow parameter for scalebar
 			\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imsize]{/home/habi/P/Talks/20190605_BrukerUserMeeting/img/{{IMG_20190603_174659}}}};
+				\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imsize]{./img/{{IMG_20190603_174659}}}};
 				% 294px = 12.5mm > 100px = 4250um > 118px = 5mm
 				%\draw[|-|,blue,thick] (494,218) -- (624,481) node [sloped,midway,above,fill=white,semitransparent,text opacity=1] {\SI{12.5}{\milli\meter} (294px) TEMPORARY!};
 				\draw[|-|] (\x+\shadow,\y+\shadow) -- (\x+118+\shadow,\y+\shadow) node [midway, above] {\SI{5}{\milli\meter}};
@@ -359,7 +362,15 @@
 \end{frame}
 \note{Comparable with the weekly training routine of Michael Phelps.
 	The fish trained only for ca. \SI{7}{\percent} of their lifetime and started as adults.
-	The Olympic winner trained for half of his lifetime and started as child)}
+	The Olympic winner trained for half of his lifetime and started as child.}
+
+\begin{frame}
+	\frametitle{Endurance}
+	\centering
+	\only<1>{\Huge\faTachometer*}
+	\only<2>{\include{./plots/Endurance}}
+	\only<3>{\include{./plots/Endurance_scaled}}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Body size}
@@ -389,14 +400,6 @@
 	\only<3>{\include{./plots/Weights_scaled}}
 \end{frame}
 \note{Weight of the fish was taken from living fish (only from males), measuring the weight of a water tank without and with fish inside.}
-
-\begin{frame}
-	\frametitle{Endurance}
-	\centering
-	\only<1>{\Huge\faTachometer*}
-	\only<2>{\include{./plots/Endurance}}
-	\only<3>{\include{./plots/Endurance_scaled}}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Gill structure}
@@ -520,6 +523,7 @@
 
 \begin{frame}
 	\frametitle{\ce{O2} consumption}
+	\centering
 %	\only<1>{%
 	\include{./plots/O2_normalized}
 	%}
@@ -536,6 +540,7 @@
 		\item Decrease of gill complexity, more room between filaments
 		\item Increase in oxygen consumption
 		\pause
+		\item[]
 		\item \emph{Adaptation of the zebrafish respiratory organ to endurance training is shown for the first time!}
 	\end{itemize}
 \end{frame}
@@ -563,18 +568,16 @@
 		\end{itemize}
 		\end{column}
 		\begin{column}{0.382\linewidth}
-			\includegraphics<1->[height=.618\textheight]{./img/team}
+			\includegraphics<1->[height=.7\textheight]{./img/team}
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Thanks!}
+	\only<4>{%
 	\begin{tikzpicture}[remember picture,overlay]%
 		\node at (current page.center){%
 			\animategraphics[palindrome,autoplay,width=\paperwidth,every=\everyframe]{25}{./mov/complexity/control03_thresholded_0}{025}{256}%
 			};%
 	\end{tikzpicture}%
+	}
 \end{frame}
 
 \begin{frame}
@@ -587,17 +590,24 @@
 \begin{frame}
 	\frametitle{Colophon}
 	\begin{itemize}
-			\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub.}
-		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}
+		\item \href{https://github.com/habi/20190605_BrukerUserMeeting}{The presentation (\LaTeX/\textsc{beamer}) is available on GitHub}: git.io/fjuo5
+		\item \href{https://github.com/habi/Zebra-Fish-Gills/}{The full analysis of the data (\faPython) is also available on GitHub}: git.io/fjuoF
 		\item \href{http://intern.unibe.ch/dienstleistungen/corporate_design_und_vorlagen/praesentationen/index_ger.html}{The presentation template is from \emph{Corporate Design und Vorlagen, University of Bern}}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Resolution/Pixel size}
+	\frametitle{Pixel size \& Resolution}
 	\centering
-	\includegraphics<1>[height=.618\textheight]{./img/LineProfile}
-	\only<2>{
+	\only<1>{%
+		\pgfmathsetlength{\imagewidth}{0.5\linewidth}%
+		\pgfmathsetlength{\imagescale}{\imagewidth/1487}%
+		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
+			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/LineProfile}};
+			\draw[-,ubRed,ultra thick] (422,644) -- (731,634);
+		\end{tikzpicture}%
+		}%
+	\only<2>{%
 		\begin{tikzpicture}
 			\begin{axis}[
 				simplified,
