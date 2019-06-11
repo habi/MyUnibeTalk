@@ -349,7 +349,7 @@
 			\end{tikzpicture}%
 			}
 		\only<6>{%
-			\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control10/proj/Control10.log}%
+			\lstinputlisting[linerange={2-5,17-17,19-23,29-31,34-34,38-40,51-51,58-59}]{./logfiles/Control05/proj/Control05.log}%
 			}
 		\includegraphics<7>[width=\imsize]{./img/CTAn}%
 		\only<8>{%
@@ -604,7 +604,7 @@
 		\pgfmathsetlength{\imagescale}{\imagewidth/1487}%
 		\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 			\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{./img/LineProfile}};
-			\draw[-,ubRed,ultra thick] (422,644) -- (731,634);
+			\draw[-,ubRed,ultra thick] (416 ,644) -- (766,634);
 		\end{tikzpicture}%
 		}%
 	\only<2>{%
@@ -616,11 +616,11 @@
 				height=.618\textheight,
 				xlabel={Pixels},
 				ylabel={Gray value}]
-				\addplot [ubRed,mark=o] table [col sep=comma] {./plots/LineProfile.csv};
+				\addplot [ubRed,mark=*] table [col sep=comma] {./plots/LineProfile.csv};
 			\end{axis}
 		\end{tikzpicture}
 		}
 \end{frame}
 
 \end{document}
-
+++
